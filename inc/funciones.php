@@ -2,10 +2,10 @@
 
 //Crea un archivo Json a partir de un array en una carpeta especificada.
     function GuardarArrayEnJson($carpeta, $nombre_archivo, $array){ 
-        if(!file_exists("../".$carpeta)){ //Si el directorio NO existe...
+        if(!file_exists($carpeta)){ //Si el directorio NO existe...
             mkdir($carpeta); //crea el directorio
         }
-        $fp = fopen("../".$carpeta."/".$nombre_archivo, 'w');
+        $fp = fopen($carpeta."/".$nombre_archivo, 'w');
         fwrite($fp, json_encode($array));
         fclose($fp);
     }
@@ -22,12 +22,15 @@
     //Muestra el contenido de cada comentario
     function MostrarComentarios($carpeta, $nombre_json, $id_producto){
         $array = LeerArrayJson($carpeta, $nombre_json);
-        for ($i=1; $i <= count($array); $i++) { 
-            if ($array[$i]['id_producto'] == $id_producto) {
-                echo "<p>".$array[$i]['correo']."<p>";
+        $ca = count($array);
+        $count = 1;
+        for ($i=$ca; $i >= 1; $i--) { 
+            if ($array[$i]['id_producto'] == $id_producto && $count<4) {
+                echo "<p>".$array[$i]['correo']." | ".$array[$i]['fecha']."<p>";
                 echo "<p>".$array[$i]['mensaje']."<p>";
                 echo "<p>Valoracion: ".$array[$i]['valoracion']."<p>";
-                echo "<hr>"; 
+                echo "<hr>";
+                $count++;
             }
         }
     }

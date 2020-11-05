@@ -1,11 +1,34 @@
 <!DOCTYPE html>
-<?php include('inc/header.php'); ?>
-<?php include_once('inc/funciones.php'); ?>
 <?php 
+    include('inc/header.php');
+    include_once('inc/funciones.php'); 
+
+    // Si no hay un producto seleccionado (id) redirecciona al home
     $id_producto = $_GET['id'];
     if ($id_producto == null) {
         header('Location: index.php');
-    } 
+    }
+    
+    // Si recibe un nuevo comentario por POST lo guarda en el JSON comentarios
+    if ($_POST != null) {
+        $mail = $_POST['correo'];
+        $msj = $_POST['mensaje'];
+        $val = $_POST['valoracion'];
+        
+        //Establece huso horario Argentina
+        date_default_timezone_set('America/Argentina/Buenos_Aires'); 
+        $fec = date('o-m-d H:i:s');
+        
+        // Guarda el nuevo comentario en el JSON
+        $a_comentarios = LeerArrayJson('json', 'comentarios.json');
+        $a_comentarios[]= [ "correo" => "$mail",
+                            "mensaje" => "$msj",
+                            "id_producto" => "$id_producto",
+                            "valoracion" => "$val",
+                            "fecha" => "$fec"];
+        GuardarArrayEnJson('json','comentarios.json',$a_comentarios);
+
+    }
 ?>
 
     
@@ -38,7 +61,7 @@
         <div class="row">
             <div class="col-sm-6">
                 <h2 class="italica mb-3">Dejanos un comentario</h2>
-                <form action="#" method="post">
+                <form action="" method="post">
                 <div class="form-group">
                     <input type="email" name="correo" placeholder="Mail_" class="rounded-pill border-0 colorform py-1 px-2">
                 </div>
