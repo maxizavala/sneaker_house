@@ -19,245 +19,97 @@
       <!-- columna lateral izquierda -->
       <div class="row p-3 text-white">
         <h2 class="col-12 text-center ">Categorías:</h2>
-        <form action="#" method="GET">
 
-          <div class="my-3"><input type="button" class="btn btn-info" value="Hombre"></div>
-          <div class="my-3"><input type="button" class="btn btn-info" value="Mujer"></div>
-          <div class="my-3"><input type="button" class="btn btn-info" value="Kid"></div>
+        <form action="#" method="GET">
+          <?php
+          $a_categorias =  LeerArrayJson('json', 'categorias.json');
+
+          // Si se envío algo por el método GET a la key 'id_categoria', su valor se guarda en $id_cat
+          if (isset($_GET['id_categoria'])) {
+            $id_cat = $_GET['id_categoria'];
+          } else {
+            $id_cat = "";
+          }
+
+          foreach ($a_categorias as $a_categoria) {
+            $cat_nombre = $a_categoria['nombre'];
+            $cat_id = $a_categoria['id_categoria'];
+            // Si algun botón se presionó anteriormente, quedará en color azul, excepto el botón de 'Limpiar búsqueda'
+            if ($cat_id == $id_cat and $id_cat != 1000) {
+          ?>
+              <div class="my-3"><a class="btn btn-primary" href="index.php?id_categoria=<?php echo $cat_id ?>" role="button"><?php echo $cat_nombre ?></a></div>
+            <?php
+            } else {
+            ?> <div class="my-3"><a class="btn btn-info" href="index.php?id_categoria=<?php echo $cat_id ?>" role="button"><?php echo $cat_nombre ?></a></div>
+          <?php
+            }
+          }
+          ?>
         </form>
+
       </div>
     </div>
 
     <div class="col-9">
 
       <div class="row">
-        <div class="col-sm-6 thumb">
-          <div class="card">
-            <a href="producto.php?id=1" class="mx-auto"><img src="imagenes/productos/1/chica.jpg" alt="Nike Air Max R" width="350" height="250" class="rounded img-fluid shadow"></a>
-            <div class="card-body p-2 anchocard mx-auto img-fluid">
-              <h3 class="card-title producto">DC Legacy</h3>
-              <p class="card-text precio">$7000</p>
-              <p class="card-text">Descripción de la zapatilla. Descripción de la zapatilla. Descripción de la
-                zapatilla.</p>
-            </div>
-          </div>
-        </div>
 
-        <div class="col-sm-6 thumb">
-          <div class="card">
-            <a href="producto.php?id=2" class="mx-auto"><img src="imagenes/productos/2/chica.jpg" alt="Nike Air Max Y" width="350" height="250" class="rounded img-fluid shadow"></a>
-            <div class="card-body p-2 anchocard mx-auto img-fluid">
-              <h3 class="card-title producto">Nike Air Max Be</h3>
-              <p class="card-text precio">$8000</p>
-              <p class="card-text">Descripción de la zapatilla. Descripción de la zapatilla. Descripción de la
-                zapatilla.</p>
-            </div>
-          </div>
-        </div>
+        <?php
+        $a_productos = LeerArrayJson('json', 'productos.json');
+        
+        //Si algún botón de filtrado fue presionado, envía el id de la categoria por GET, y solo se muestran los productos de esa categoría.
+        // Solo si se envío algo a través del método GET, y que no sea el id 1000, que es de la categoría auxiliar 'Limpiar búsqueda'
+        if (isset($_GET['id_categoria']) and $id_cat != 1000) {
+          $id_cat = $_GET['id_categoria'];
 
-        <div class="col-sm-6 thumb">
-          <div class="card">
-            <a href="producto.php?id=3" class="mx-auto"><img src="imagenes/productos/3/chica.jpg" alt="Nike Air Max B" width="350" height="250" class="rounded img-fluid shadow"></a>
-            <div class="card-body p-2 anchocard mx-auto img-fluid">
-              <h3 class="card-title producto">Adidas NMD R1</h3>
-              <p class="card-text precio">$6000</p>
-              <p class="card-text">Descripción de la zapatilla. Descripción de la zapatilla. Descripción de la
-                zapatilla.</p>
-            </div>
-          </div>
-        </div>
+          foreach ($a_productos as $a_producto) {
+            if ($a_producto['id_categoria'] == $id_cat) {
+              $pr_id = $a_producto['id_producto'];
+              $pr_ima = "imagenes/productos/" . $pr_id . "/chica.jpg";
+              $pr_nom = $a_producto['marca'] . ' ' . $a_producto['modelo'];
+              $pr_pre = $a_producto['precio'];
+              $pr_des = $a_producto['descripcion'];
+        ?>
 
-        <div class="col-sm-6 thumb">
-          <div class="card">
-            <a href="producto.php?id=4" class="mx-auto"><img src="imagenes/productos/4/chica.jpg" alt="Nike Air Max G" width="350" height="250" class="rounded img-fluid shadow"></a>
-            <div class="card-body p-2 anchocard mx-auto img-fluid">
-              <h3 class="card-title producto">Nike Air Force Pi</h3>
-              <p class="card-text precio">$7500</p>
-              <p class="card-text">Descripción de la zapatilla. Descripción de la zapatilla. Descripción de la
-                zapatilla.</p>
-            </div>
-          </div>
-        </div>
+              <div class="col-sm-6 thumb">
+                <div class="card">
+                  <a href="producto.php?id=<?php echo $pr_id ?>" class="mx-auto"><img src="<?php echo $pr_ima ?>" alt="<?php echo $pr_nom ?>" width="350" height="250" class="rounded img-fluid shadow"></a>
+                  <div class="card-body p-2 anchocard mx-auto img-fluid">
+                    <h3 class="card-title producto"><?php echo $pr_nom ?></h3>
+                    <p class="card-text precio">$<?php echo $pr_pre ?></p>
+                    <p class="card-text"><?php echo substr($pr_des, 0, 20) ?> ...(+)</p>
+                  </div>
+                </div>
+              </div>
 
-        <div class="col-sm-6 thumb">
-          <div class="card">
-            <a href="producto.php?id=5" class="mx-auto"><img src="imagenes/productos/5/chica.jpg" alt="Fila Disruptor" width="350" height="250" class="rounded img-fluid shadow"></a>
-            <div class="card-body p-2 anchocard mx-auto img-fluid">
-              <h3 class="card-title producto">Nike Air Max R</h3>
-              <p class="card-text precio">$8000</p>
-              <p class="card-text">Descripción de la zapatilla. Descripción de la zapatilla. Descripción de la
-                zapatilla.</p>
-            </div>
-          </div>
-        </div>
+            <?php }
+          }
+        } else {
 
-        <div class="col-sm-6 thumb">
-          <div class="card">
-            <a href="producto.php?id=6" class="mx-auto"><img src="imagenes/productos/6/chica.jpg" alt="DC Pure Black" width="350" height="250" class="rounded img-fluid shadow"></a>
-            <div class="card-body p-2 anchocard mx-auto img-fluid">
-              <h3 class="card-title producto">Nike Air Max Y</h3>
-              <p class="card-text precio">$8000</p>
-              <p class="card-text">Descripción de la zapatilla. Descripción de la zapatilla. Descripción de la
-                zapatilla.</p>
-            </div>
-          </div>
-        </div>
+          /* Si no se envío nada por el método GET, o si se envío el id_categoria=1000 que es de 'Limpiar Búsqueda',
+           se muestran todos los productos, independientemente de la categoría. */
+          foreach ($a_productos as $a_producto) {
+            $pr_id = $a_producto['id_producto'];
+            $pr_ima = "imagenes/productos/" . $pr_id . "/chica.jpg";
+            $pr_nom = $a_producto['marca'] . ' ' . $a_producto['modelo'];
+            $pr_pre = $a_producto['precio'];
+            $pr_des = $a_producto['descripcion'];
+            ?>
 
-        <div class="col-sm-6 thumb">
-          <div class="card">
-            <a href="producto.php?id=7" class="mx-auto"><img src="imagenes/productos/7/chica.jpg" alt="Vans Old School" width="350" height="250" class="rounded img-fluid shadow"></a>
-            <div class="card-body p-2 anchocard mx-auto img-fluid">
-              <h3 class="card-title producto">Nike Air Max B</h3>
-              <p class="card-text precio">$8000</p>
-              <p class="card-text">Descripción de la zapatilla. Descripción de la zapatilla. Descripción de la
-                zapatilla.</p>
+            <div class="col-sm-6 thumb">
+              <div class="card">
+                <a href="producto.php?id=<?php echo $pr_id ?>" class="mx-auto"><img src="<?php echo $pr_ima ?>" alt="<?php echo $pr_nom ?>" width="350" height="250" class="rounded img-fluid shadow"></a>
+                <div class="card-body p-2 anchocard mx-auto img-fluid">
+                  <h3 class="card-title producto"><?php echo $pr_nom ?></h3>
+                  <p class="card-text precio">$<?php echo $pr_pre ?></p>
+                  <p class="card-text"><?php echo substr($pr_des, 0, 20) ?> ...(+)</p>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
 
-        <div class="col-sm-6 thumb">
-          <div class="card">
-            <a href="producto.php?id=8" class="mx-auto"><img src="imagenes/productos/8/chica.jpg" alt="Adidas Function" width="350" height="250" class="rounded img-fluid shadow"></a>
-            <div class="card-body p-2 anchocard mx-auto img-fluid">
-              <h3 class="card-title producto">Nike Air Max G</h3>
-              <p class="card-text precio">$8000</p>
-              <p class="card-text">Descripción de la zapatilla. Descripción de la zapatilla. Descripción de la
-                zapatilla.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 thumb">
-          <div class="card">
-            <a href="producto.php?id=9" class="mx-auto"><img src="imagenes/productos/9/chica.jpg" alt="Adidas Function" width="350" height="250" class="rounded img-fluid shadow"></a>
-            <div class="card-body p-2 anchocard mx-auto img-fluid">
-              <h3 class="card-title producto">Fila Disruptor</h3>
-              <p class="card-text precio">$7500</p>
-              <p class="card-text">Descripción de la zapatilla. Descripción de la zapatilla. Descripción de la
-                zapatilla.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 thumb">
-          <div class="card">
-            <a href="producto.php?id=10" class="mx-auto"><img src="imagenes/productos/10/chica.jpg" alt="Adidas Function" width="350" height="250" class="rounded img-fluid shadow"></a>
-            <div class="card-body p-2 anchocard mx-auto img-fluid">
-              <h3 class="card-title producto">DC Pure Black</h3>
-              <p class="card-text precio">$6000</p>
-              <p class="card-text">Descripción de la zapatilla. Descripción de la zapatilla. Descripción de la
-                zapatilla.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 thumb">
-          <div class="card">
-            <a href="producto.php?id=11" class="mx-auto"><img src="imagenes/productos/11/chica.jpg" alt="Adidas Function" width="350" height="250" class="rounded img-fluid shadow"></a>
-            <div class="card-body p-2 anchocard mx-auto img-fluid">
-              <h3 class="card-title producto">Vans Old School</h3>
-              <p class="card-text precio">$5500</p>
-              <p class="card-text">Descripción de la zapatilla. Descripción de la zapatilla. Descripción de la
-                zapatilla.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 thumb">
-          <div class="card">
-            <a href="producto.php?id=12" class="mx-auto"><img src="imagenes/productos/12/chica.jpg" alt="Adidas Function" width="350" height="250" class="rounded img-fluid shadow"></a>
-            <div class="card-body p-2 anchocard mx-auto img-fluid">
-              <h3 class="card-title producto">Adidas Function</h3>
-              <p class="card-text precio">$6500</p>
-              <p class="card-text">Descripción de la zapatilla. Descripción de la zapatilla. Descripción de la
-                zapatilla.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 thumb">
-          <div class="card">
-            <a href="producto.php?id=13" class="mx-auto"><img src="imagenes/productos/13/chica.jpg" alt="Adidas Function" width="350" height="250" class="rounded img-fluid shadow"></a>
-            <div class="card-body p-2 anchocard mx-auto img-fluid">
-              <h3 class="card-title producto">Nike Dunk B</h3>
-              <p class="card-text precio">$7500</p>
-              <p class="card-text">Descripción de la zapatilla. Descripción de la zapatilla. Descripción de la
-                zapatilla.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 thumb">
-          <div class="card">
-            <a href="producto.php?id=14" class="mx-auto"><img src="imagenes/productos/14/chica.jpg" alt="Adidas Function" width="350" height="250" class="rounded img-fluid shadow"></a>
-            <div class="card-body p-2 anchocard mx-auto img-fluid">
-              <h3 class="card-title producto">Nike SB Bold</h3>
-              <p class="card-text precio">$8000</p>
-              <p class="card-text">Descripción de la zapatilla. Descripción de la zapatilla. Descripción de la
-                zapatilla.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 thumb">
-          <div class="card">
-            <a href="producto.php?id=15" class="mx-auto"><img src="imagenes/productos/15/chica.jpg" alt="Adidas Function" width="350" height="250" class="rounded img-fluid shadow"></a>
-            <div class="card-body p-2 anchocard mx-auto img-fluid">
-              <h3 class="card-title producto">Adidas Gray</h3>
-              <p class="card-text precio">$6500</p>
-              <p class="card-text">Descripción de la zapatilla. Descripción de la zapatilla. Descripción de la
-                zapatilla.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 thumb">
-          <div class="card">
-            <a href="producto.php?id=16" class="mx-auto"><img src="imagenes/productos/16/chica.jpg" alt="Adidas Function" width="350" height="250" class="rounded img-fluid shadow"></a>
-            <div class="card-body p-2 anchocard mx-auto img-fluid">
-              <h3 class="card-title producto">Nike Dunk W</h3>
-              <p class="card-text precio">$7000</p>
-              <p class="card-text">Descripción de la zapatilla. Descripción de la zapatilla. Descripción de la
-                zapatilla.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 thumb">
-          <div class="card">
-            <a href="producto.php?id=17" class="mx-auto"><img src="imagenes/productos/17/chica.jpg" alt="Adidas Function" width="350" height="250" class="rounded img-fluid shadow"></a>
-            <div class="card-body p-2 anchocard mx-auto img-fluid">
-              <h3 class="card-title producto">Nike SB B</h3>
-              <p class="card-text precio">$7000</p>
-              <p class="card-text">Descripción de la zapatilla. Descripción de la zapatilla. Descripción de la
-                zapatilla.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 thumb">
-          <div class="card">
-            <a href="producto.php?id=18" class="mx-auto"><img src="imagenes/productos/18/chica.jpg" alt="Adidas Function" width="350" height="250" class="rounded img-fluid shadow"></a>
-            <div class="card-body p-2 anchocard mx-auto img-fluid">
-              <h3 class="card-title producto">Adidas Classic</h3>
-              <p class="card-text precio">$6500</p>
-              <p class="card-text">Descripción de la zapatilla. Descripción de la zapatilla. Descripción de la
-                zapatilla.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 thumb">
-          <div class="card">
-            <a href="producto.php?id=19" class="mx-auto"><img src="imagenes/productos/19/chica.jpg" alt="Adidas Function" width="350" height="250" class="rounded img-fluid shadow"></a>
-            <div class="card-body p-2 anchocard mx-auto img-fluid">
-              <h3 class="card-title producto">DC Nice Dark</h3>
-              <p class="card-text precio">$7500</p>
-              <p class="card-text">Descripción de la zapatilla. Descripción de la zapatilla. Descripción de la
-                zapatilla.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 thumb">
-          <div class="card">
-            <a href="producto.php?id=20" class="mx-auto"><img src="imagenes/productos/20/chica.jpg" alt="Adidas Function" width="350" height="250" class="rounded img-fluid shadow"></a>
-            <div class="card-body p-2 anchocard mx-auto img-fluid">
-              <h3 class="card-title producto">Fila Curve</h3>
-              <p class="card-text precio">$7000</p>
-              <p class="card-text">Descripción de la zapatilla. Descripción de la zapatilla. Descripción de la
-                zapatilla.</p>
-            </div>
-          </div>
-        </div>
+        <?php }
+        } ?>
+
       </div>
     </div>
   </section>

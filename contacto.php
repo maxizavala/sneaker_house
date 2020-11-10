@@ -1,6 +1,33 @@
 <!DOCTYPE html>
-<?php include('inc/header.php'); ?>
-    
+<?php 
+  include('inc/header.php'); 
+  include_once('inc/funciones.php'); 
+?>
+
+
+
+<?php
+  if ($_POST != null) {
+    $name = $_POST ['nombre'];
+    $mail = $_POST ['correo'];
+    $tlf = $_POST ['telefono'];
+    $dept = $_POST ['departamento'];
+    $msj = $_POST ['mensaje'];
+        
+    $a_contacto = LeerArrayJson('json', 'contactos.json');
+    $a_contacto[]= [ "nombre" => "$name",
+                      "correo" => "$mail",
+                      "telefono" => "$tlf",
+                      "departamento" => "$dept",
+                      "mensaje" => "$msj"];
+    GuardarArrayEnJson('json','contactos.json',$a_contacto);
+
+  }
+?>
+
+
+
+
     <div class="container p-4 bg-white">
      <div class="row">
      
@@ -29,11 +56,11 @@
                 <input type="tel" name="telefono" placeholder="Teléfono_" class="rounded-pill border-0 colorform py-1 px-2">
                 </div>
                 <div class="form-group">
-                  <select name="menu" class="rounded-pill border-0 colorform py-1 px-2">
-                    <option value="none">...</option>
-                    <option value="ventas">Ventas</option>
-                    <option value="rrhh">Recursos Humanos</option>
-                    <option value="quejas">Quejas</option>
+                  <select name="departamento" class="rounded-pill border-0 colorform py-1 px-2">
+                    <option value="4">...</option>
+                    <option value="3">Ventas</option>
+                    <option value="2">Recursos Humanos</option>
+                    <option value="1">Quejas</option>
                   </select>
                 </div>  
                 <div class="form-group">
