@@ -28,8 +28,8 @@
 
 
 
-    <div class="container p-4 bg-white">
-     <div class="row">
+  <div class="container p-4 bg-white">
+    <div class="row">
      
       <section class="col-md-7 thumb">      
        <h1 class="titcont">0810-666-3400</h1>       
@@ -71,8 +71,8 @@
         </aside>
         
         </div>
-        </div>
+      </div>
     
-        <?php include('inc/footer.php'); ?>
+  <?php include('inc/footer.php'); ?>
     
-    </html>
+</html>
