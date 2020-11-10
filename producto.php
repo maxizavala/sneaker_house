@@ -63,14 +63,14 @@
                 <h2 class="italica mb-3">Dejanos un comentario</h2>
                 <form action="" method="post">
                 <div class="form-group">
-                    <input type="email" name="correo" placeholder="Mail_" class="rounded-pill border-0 colorform py-1 px-2">
+                    <input type="email" name="correo" placeholder="Mail_" required class="rounded-pill border-0 colorform py-1 px-2">
                 </div>
                 <div class="form-group">
-                    <textarea name="mensaje" cols="30" rows="10" placeholder="Comentario_" class="rounded-lg border-0 colorform py-1 px-2"></textarea>
+                    <textarea name="mensaje" cols="30" rows="10" required placeholder="Comentario_" class="rounded-lg border-0 colorform py-1 px-2"></textarea>
                 </div>
                 <div class="form-group">
                     Valoración:<br>
-                    <select name="valoracion" class="rounded-pill border-0 colorform py-1 px-2">
+                    <select name="valoracion" required class="rounded-pill border-0 colorform py-1 px-2">
                         <option value="5">5</option>
                         <option value="4">4</option>
                         <option value="3">3</option>
