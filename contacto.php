@@ -63,7 +63,7 @@
                   </select>
                 </div>  
                 <div class="form-group">
-                <textarea name="mensaje" cols="30" rows="10" placeholder="Comentario_" class="rounded-lg border-0 colorform py-1 px-2"></textarea>
+                <textarea name="mensaje" cols="30" rows="10" required placeholder="Comentario_" class="rounded-lg border-0 colorform py-1 px-2"></textarea>
                 </div>
                 <input type="submit" value="" id="botonimagen" class="img-fluid">
             </form>
