@@ -47,17 +47,16 @@
             
             <form action="#" method="POST" class="mt-md-5">
                <div class="form-group">
-                <input type="text" name="nombre" placeholder="Nombre_Apellido_" class="rounded-pill border-0 colorform py-1 px-2">
+                <input type="text" name="nombre" placeholder="Nombre_Apellido_" required class="rounded-pill border-0 colorform py-1 px-2">
                 </div>
                 <div class="form-group">
-                  <input type="email" name="correo" placeholder="Mail_" class="rounded-pill border-0 colorform py-1 px-2">
+                  <input type="email" name="correo" placeholder="Mail_" required class="rounded-pill border-0 colorform py-1 px-2">
                   </div>
                 <div class="form-group">
                 <input type="tel" name="telefono" placeholder="Teléfono_" class="rounded-pill border-0 colorform py-1 px-2">
                 </div>
                 <div class="form-group">
-                  <select name="departamento" class="rounded-pill border-0 colorform py-1 px-2">
-                    <option value="4">...</option>
+                  <select name="departamento" required class="rounded-pill border-0 colorform py-1 px-2">
                     <option value="3">Ventas</option>
                     <option value="2">Recursos Humanos</option>
                     <option value="1">Quejas</option>
