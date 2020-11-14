@@ -14,6 +14,7 @@
         $mail = $_POST['correo'];
         $msj = $_POST['mensaje'];
         $val = $_POST['valoracion'];
+        $id_prod = $_POST['id_prod'];
         
         //Establece huso horario Argentina
         date_default_timezone_set('America/Argentina/Buenos_Aires'); 
@@ -23,7 +24,7 @@
         $a_comentarios = LeerArrayJson('json', 'comentarios.json');
         $a_comentarios[]= [ "correo" => "$mail",
                             "mensaje" => "$msj",
-                            "id_producto" => "$id_producto",
+                            "id_producto" => "$id_prod",
                             "valoracion" => "$val",
                             "fecha" => "$fec"];
         GuardarArrayEnJson('json','comentarios.json',$a_comentarios);
@@ -78,6 +79,9 @@
                         <option value="1">1</option>
                     </select>
                 </div>
+
+                <input type="hidden" name="id_prod" value="<?php echo $id_producto; ?>">
+
                 <input type="submit" value="" id="botonimagen" class="img-fluid mb-5">
                 </form>
             </div>
