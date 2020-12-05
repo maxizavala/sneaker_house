@@ -16,13 +16,13 @@
   <section class="row">
 
     <div class="col-3 bg-dark">
-      <!-- columna lateral izquierda -->
+      <!-- MENU LATERAL -------------------------------------------------------------------- -->
       <div class="row p-3 text-white">
         <h2 class="col-12 text-center ">Categorías:</h2>
 
         <form action="#" method="GET">
           <?php
-          $a_categorias =  LeerArrayJson('json', 'categorias.json');
+          $a_categorias =  LeerArrayJson('json', 'categorias.json'); // Obtengo el array
 
           // Si se envío algo por el método GET a la key 'id_categoria', su valor se guarda en $id_cat
           if (isset($_GET['id_categoria'])) {
@@ -34,13 +34,16 @@
           foreach ($a_categorias as $a_categoria) {
             $cat_nombre = $a_categoria['nombre'];
             $cat_id = $a_categoria['id_categoria'];
+
             // Si algun botón se presionó anteriormente, quedará en color azul, excepto el botón de 'Limpiar búsqueda'
             if ($cat_id == $id_cat and $id_cat != 1000) {
-          ?>
+
+          ?> <!-- boton seleccionado -->
               <div class="my-3"><a class="btn btn-primary" href="index.php?id_categoria=<?php echo $cat_id ?>" role="button"><?php echo $cat_nombre ?></a></div>
-            <?php
+          <?php
             } else {
-            ?> <div class="my-3"><a class="btn btn-info" href="index.php?id_categoria=<?php echo $cat_id ?>" role="button"><?php echo $cat_nombre ?></a></div>
+            ?> <!-- boton sin seleccionar -->
+              <div class="my-3"><a class="btn btn-info" href="index.php?id_categoria=<?php echo $cat_id ?>" role="button"><?php echo $cat_nombre ?></a></div>
           <?php
             }
           }
@@ -54,7 +57,7 @@
 
       <div class="row">
 
-        <?php
+        <?php // ------------------------------------------------------------------------ MUESTRO PRODUCTOS CON FILTRO
         $a_productos = LeerArrayJson('json', 'productos.json');
         
         //Si algún botón de filtrado fue presionado, envía el id de la categoria por GET, y solo se muestran los productos de esa categoría.
@@ -63,7 +66,7 @@
           $id_cat = $_GET['id_categoria'];
 
           foreach ($a_productos as $a_producto) {
-            if ($a_producto['id_categoria'] == $id_cat) {
+            if ($a_producto['id_categoria'] == $id_cat) { // COINCIDENCIA DE CATEGORIAS
               $pr_id = $a_producto['id_producto'];
               $pr_ima = "imagenes/productos/" . $pr_id . "/chica.jpg";
               $pr_nom = $a_producto['marca'] . ' ' . $a_producto['modelo'];
@@ -84,7 +87,7 @@
 
             <?php }
           }
-        } else {
+        } else { // ----------------------------------------------------------- MUESTRO PRODUCTOS SIN FILTRO
 
           /* Si no se envío nada por el método GET, o si se envío el id_categoria=1000 que es de 'Limpiar Búsqueda',
            se muestran todos los productos, independientemente de la categoría. */

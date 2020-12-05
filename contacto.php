@@ -8,6 +8,12 @@
 
 <?php
   if ($_POST != null) {
+
+    // Mensaje contacto recibido
+    echo    "<div class='alert alert-warning' role='alert'>
+    Gracias por contactarse con nosotros!
+    </div>";
+
     $name = $_POST ['nombre'];
     $mail = $_POST ['correo'];
     $tlf = $_POST ['telefono'];
@@ -45,6 +51,8 @@
             <h2 class="titulos">Contactanos</h2>
             <p>Dejanos tu consulta, que en breve te responderemos!</p>
             
+
+
             <form action="#" method="POST" class="mt-md-5">
                <div class="form-group">
                 <input type="text" name="nombre" placeholder="Nombre_Apellido_" required class="rounded-pill border-0 colorform py-1 px-2">
@@ -66,6 +74,8 @@
                 <textarea name="mensaje" cols="30" rows="10" required placeholder="Comentario_" class="rounded-lg border-0 colorform py-1 px-2"></textarea>
                 </div>
                 <input type="submit" value="" id="botonimagen" class="img-fluid">
+            
+            
             </form>
         </aside>
         

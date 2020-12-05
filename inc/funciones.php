@@ -21,11 +21,11 @@
     
     //Muestra el contenido de cada comentario
     function MostrarComentarios($carpeta, $nombre_json, $id_producto){
-        $array = LeerArrayJson($carpeta, $nombre_json);
-        $ca = count($array);
-        $count = 1;
+        $array = LeerArrayJson($carpeta, $nombre_json); //obtengo array del json
+        $ca = count($array); //ultimo comentario -> donde inicio el recorrido
+        $count = 1; //contador de comentarios
         for ($i=$ca; $i >= 1; $i--) { 
-            if ($array[$i]['id_producto'] == $id_producto && $count<4) {
+            if ($array[$i]['id_producto'] == $id_producto && $count<4) { // si el id del array == id parametro && contador de comentarios menor a 4 (porq se muestran losultimo 3)
                 echo "<p>".$array[$i]['correo']." | ".$array[$i]['fecha']."<p>";
                 echo "<p>".$array[$i]['mensaje']."<p>";
                 echo "<p>Valoracion: ".$array[$i]['valoracion']."<p>";
@@ -35,7 +35,7 @@
         }
     }
 
-    //Muestra el contenido del array de productos
+    //Obtiene el array del producto
     function MostrarProducto($carpeta, $nombre_json, $id_producto){
         $array = LeerArrayJson($carpeta, $nombre_json);
         for ($i=1; $i <= count($array); $i++) { 
@@ -46,7 +46,7 @@
         return $a_producto;
     }
 
-    //Mostrar categoria del producto
+    //Mostrar categoria (String) del producto
     function MostrarCategoria($carpeta, $nombre_json, $id_categoria){
         $array = LeerArrayJson($carpeta, $nombre_json);
         $categoria = $array[$id_categoria]['nombre'];

@@ -162,6 +162,16 @@ body{
     border: none;
     background-size: contain;
 }
+
+#botoncarrito{
+    background-color: transparent;
+    background-image: url("../imagenes/enviar.png");
+    width: 130px;
+    height: 41px;
+    border: none;
+    background-size: contain;
+}
+
 .colorform{
     background-color: #D1D1CF;
     width: 250px;

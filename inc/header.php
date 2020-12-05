@@ -39,6 +39,11 @@
           <li class="nav-item <?php MenuDinamico('contacto.php') ?> ">
             <a class="nav-link fontgral" href="contacto.php">CONTACTO</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link fontgral" href="carrito.php">
+              <img src="imagenes/iconos/cart.png" width="25" height="25">
+            </a>
+          </li>
         </ul>
       </div>
       </div>
