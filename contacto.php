@@ -4,8 +4,6 @@
   include_once('inc/funciones.php'); 
 ?>
 
-
-
 <?php
   if ($_POST != null) {
 
@@ -31,9 +29,6 @@
   }
 ?>
 
-
-
-
   <div class="container p-4 bg-white">
     <div class="row">
      
@@ -50,7 +45,6 @@
         <aside class="col-md-5">
             <h2 class="titulos">Contactanos</h2>
             <p>Dejanos tu consulta, que en breve te responderemos!</p>
-            
 
 
             <form action="#" method="POST" class="mt-md-5">

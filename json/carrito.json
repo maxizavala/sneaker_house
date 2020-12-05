@@ -1,3 +1,16 @@
 [
-
+    {
+        "id_carrito": 1,
+        "usuario": "usuario@gmail.com",
+        "id_producto": "8",
+        "talle": "35",
+        "fecha": "2020-12-05 17:18:10"
+    },
+    {
+        "id_carrito": 1,
+        "usuario": "usuario@gmail.com",
+        "id_producto": "5",
+        "talle": "38",
+        "fecha": "2020-12-05 17:33:29"
+    }
 ]
