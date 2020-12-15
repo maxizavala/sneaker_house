@@ -90,26 +90,19 @@
     //Talles segun categoria
     function TalleSegunCategoria($categoria){
         if ($categoria == 'Hombre') {
-            echo "<select name='talle' class='form-control'>";
-            for ($i=40; $i <= 45 ; $i++) { 
-                echo "<option>$i</option>";
-            }   
-            echo "</select>";
+            $min = 40; $max = 45;
         }
         elseif ($categoria == 'Mujer'){
-            echo "<select name='talle' class='form-control'>";
-            for ($i=35; $i <= 40 ; $i++) { 
-                echo "<option>$i</option>";
-            }   
-            echo "</select>";
+            $min = 35; $max = 40;
         }
         elseif ($categoria == 'Kid'){
-            echo "<select name='talle' class='form-control'>";
-            for ($i=27; $i <= 34 ; $i++) { 
+            $min = 27; $max = 34;
+        }
+        echo "<select name='talle' class='form-control'>";
+            for ($i=$min; $i <= $max ; $i++) { 
                 echo "<option>$i</option>";
             }   
             echo "</select>";
-        }
     }
 
     //Funcion mensaje emergente
