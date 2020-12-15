@@ -8,9 +8,7 @@
   if ($_POST != null) {
 
     // Mensaje contacto recibido
-    echo    "<div class='alert alert-warning' role='alert'>
-    Gracias por contactarse con nosotros!
-    </div>";
+    MensajeEmergente("Gracias por contactarse con nosotros!", "amarillo");
 
     $name = $_POST ['nombre'];
     $mail = $_POST ['correo'];

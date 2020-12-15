@@ -5,6 +5,9 @@
 .thumb{
 	margin-bottom: 50px;
 }
+.espacio{
+    margin-bottom: 300px;
+}
 .thumbmapa{
     margin-bottom: 20px;
 }
@@ -210,3 +213,10 @@ body{
     margin-right: 10px; 
     vertical-align: bottom;
 }
+.fechatarjeta{
+    max-width: 73px;
+}
+.verde{
+    color: #227335;
+}
+

@@ -87,4 +87,52 @@
         }
     }
 
+    //Talles segun categoria
+    function TalleSegunCategoria($categoria){
+        if ($categoria == 'Hombre') {
+            echo "<select name='talle' class='form-control'>";
+            for ($i=40; $i <= 45 ; $i++) { 
+                echo "<option>$i</option>";
+            }   
+            echo "</select>";
+        }
+        elseif ($categoria == 'Mujer'){
+            echo "<select name='talle' class='form-control'>";
+            for ($i=35; $i <= 40 ; $i++) { 
+                echo "<option>$i</option>";
+            }   
+            echo "</select>";
+        }
+        elseif ($categoria == 'Kid'){
+            echo "<select name='talle' class='form-control'>";
+            for ($i=27; $i <= 34 ; $i++) { 
+                echo "<option>$i</option>";
+            }   
+            echo "</select>";
+        }
+    }
+
+    //Funcion mensaje emergente
+    function MensajeEmergente($mensaje, $color){
+        switch ($color) {
+            case 'amarillo':
+                $tipo =  'alert-warning';
+                break;
+            case 'verde':
+                $tipo =  'alert-success';
+                break;
+            case 'rojo':
+                $tipo =  'alert-danger';
+                break;
+        }
+        echo
+            "<div class='alert $tipo alert-dismissible fade show' role='alert'>
+                $mensaje
+                <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                    <span aria-hidden='true'>&times;</span>
+                </button>
+            </div>";
+    }
+
+
 ?>

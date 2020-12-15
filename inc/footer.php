@@ -1,5 +1,5 @@
 </div>
-<footer class="pb-4 pl-3 pl-md-0 py-md-0">
+<footer class="pb-4 pl-3 pl-md-0 py-md-0 fixed-bottom">
     <div class="container">
         <div class="row justify-content-center justify-content-sm-between">
             <div class="col-auto px-0 mx-3">
