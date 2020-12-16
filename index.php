@@ -18,7 +18,7 @@
     <div class="col-3 bg-dark">
       <!-- MENU LATERAL -------------------------------------------------------------------- -->
       <div class="row p-3 text-white">
-        <h2 class="col-12 text-center ">Categorías:</h2>
+        <h2 class="col-12 text-center thumb">Categorías:</h2>
 
         <form action="#" method="GET">
           <?php

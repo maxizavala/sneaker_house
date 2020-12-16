@@ -115,7 +115,7 @@ include_once('inc/funciones.php');
                 </div>
                 <div class="form-group">
                     <div>
-                    <p>Datos de pago:</p>
+                    <p>Cuotas:</p>
                 </div>
                     <select name="cuotas" required class="rounded-pill border-0 colorform py-1 px-3 fechatarjeta">
                         <option value="1">1</option>

@@ -149,6 +149,7 @@ if ($_POST != null) {
             ?>
         </div>
     </div>
+    <br><br>
 </section>
 
 <?php include('inc/footer.php'); ?>
