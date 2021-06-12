@@ -135,7 +135,6 @@ if ($_POST != null) {
 
                 <input type="submit" value="" id="botonimagen" class="img-fluid mb-5">
                 <input type="hidden" name="tipo" value="comentario">
-                <br><br>
             </form>
 
         </div>
@@ -149,7 +148,6 @@ if ($_POST != null) {
             ?>
         </div>
     </div>
-    <br><br>
 </section>
 
 <?php include('inc/footer.php'); ?>

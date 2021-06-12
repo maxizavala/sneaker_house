@@ -32,9 +32,12 @@ include_once('inc/funciones.php');
 
     // Si el array del carrito está vacío, muestra un mensaje informando que el carrito está vacío.
     if (empty($a_carrito)) {
-        echo "<div class='jumbotron espacio'>
-              <p class='zapas'>Carrito de compras vacío.</p>
-              </div>";
+        echo 
+            "<div class='jumbotron jumbotron-fluid'>
+                <div class='container empty-cart'>
+                    <p class='zapas'>Carrito de compras vacío.</p>
+                </div>
+            </div>";
     } else {
         $total = 0;
         foreach ($a_carrito as $a_producto) { //Recorro el array y extraigo cada producto
