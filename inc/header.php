@@ -58,11 +58,11 @@
             <h1 class="d-none">Zapatillas</h1>
 
             <!-- VENTANA MODAL LOGIN ======================================================================================= -->
-            <?php
-                $user = $_POST['user'];
-                $pass = $_POST['pass'];
+            <?php 
                 
-                if ($_POST != null) {
+                if ($_POST['user'] != null && $_POST['pass'] != null) {
+                    $user = $_POST['user'];
+                    $pass = $_POST['pass'];
                     $sql = "SELECT * FROM usuario WHERE user = '$user' AND pass = '$pass'";
                     $result = mysqli_query($enlace, $sql);
                     $a_usuario = mysqli_fetch_array($result, MYSQLI_ASSOC);

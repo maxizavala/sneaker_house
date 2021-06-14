@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
-include('inc/header.php');
-include_once('inc/funciones.php');
+    include('inc/header.php');
+    include_once('inc/funciones.php');
 ?>
 
 <main class="container p-4 bg-white">

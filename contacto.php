@@ -5,16 +5,16 @@
 ?>
 
 <?php
-  if ($_POST != null) {
+  if ($_POST['mensaje'] != null) {
 
     // Mensaje contacto recibido
     MensajeEmergente("Gracias por contactarse con nosotros!", "amarillo");
 
-    $name = $_POST ['nombre'];
-    $mail = $_POST ['correo'];
-    $tlf = $_POST ['telefono'];
-    $dept = $_POST ['departamento'];
-    $msj = $_POST ['mensaje'];
+    $name = $_POST['nombre'];
+    $mail = $_POST['correo'];
+    $tlf = $_POST['telefono'];
+    $dept = $_POST['departamento'];
+    $msj = $_POST['mensaje'];
         
     $a_contacto = LeerArrayJson('json', 'contactos.json');
     $a_contacto[]= [ "nombre" => "$name",

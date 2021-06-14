@@ -2,6 +2,7 @@
 <?php
 include('inc/header.php');
 include_once('inc/funciones.php');
+include('inc/connect.php');
 
 // Si no hay un producto seleccionado (id) redirecciona al home
 $id_producto = $_GET['id'];
@@ -67,12 +68,14 @@ if ($_POST != null) {
     <div class="row mb-3">
         <div class="col-sm-12 col-md-6">
             <?php //Muestra el detalle de cada producto.
-            $a_producto = MostrarProducto('json', 'productos.json', $id_producto); //Array del producto
+            $sql = "SELECT * FROM producto WHERE id_producto = '$id_producto'";
+            $result = mysqli_query($enlace, $sql);
+            $a_producto = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
             // Elementos del array
             $marca = $a_producto['marca'];
             $modelo = $a_producto['modelo'];
-            $categoria = MostrarCategoria('json', 'categorias.json', $a_producto['id_categoria']); //String de la categoria
+            $categoria = MostrarCategoria('json', 'categorias.json', $a_producto['categoria']); //String de la categoria
             $descripcion = $a_producto['descripcion'];
             $precio = $a_producto['precio'];
 

@@ -22,7 +22,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-success">Registrase</button>
+                            <a href="registro.php" class="btn btn-success">Registrate</a>
                             <input type="submit" value="Ingresar" class="btn btn-primary">
                         </div>
                     </div>

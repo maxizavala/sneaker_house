@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <!-- FINAL -->
-<?php include('inc/header.php'); ?>
-<?php include_once('inc/funciones.php'); ?>
-<?php include_once('inc/carrousel.php'); ?>
+<?php 
+    include('inc/header.php');
+    include_once('inc/funciones.php');
+    include('inc/connect.php');
+    include_once('inc/carrousel.php'); 
+?>
 
 
 <main class="container p-4 bg-white">
@@ -22,7 +25,6 @@
 
         <form action="#" method="GET">
             <?php
-                include('inc/connect.php');
                 $a_categorias = mysqli_query($enlace, "SELECT * FROM categoria");
 
 
