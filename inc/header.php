@@ -1,4 +1,5 @@
 <?php 
+    session_start();
     include_once('inc/funciones.php'); 
     include('connect.php');
 ?>
@@ -58,25 +59,49 @@
             <h1 class="d-none">Zapatillas</h1>
 
             <!-- VENTANA MODAL LOGIN ======================================================================================= -->
-            <?php 
-                
-                if ($_POST['user'] != null && $_POST['pass'] != null) {
-                    $user = $_POST['user'];
-                    $pass = $_POST['pass'];
-                    $sql = "SELECT * FROM usuario WHERE user = '$user' AND pass = '$pass'";
-                    $result = mysqli_query($enlace, $sql);
-                    $a_usuario = mysqli_fetch_array($result, MYSQLI_ASSOC);
-                    if ($a_usuario != null) {
-                        $nombre = $a_usuario['nombre'];
-                        MensajeEmergente("Bienvenido $nombre!", "verde");
-                        include('user.php');
+            <?php
+
+                session_start();
+                                
+                if($_SESSION['user']) {
+                    
+                    include('user.php');
+                    
+                } 
+                else {
+                    
+                    if ($_POST['user'] != null && $_POST['pass'] != null) {
+                    
+                        $user = $_POST['user'];
+                        $pass = $_POST['pass'];
+                        $sql = "SELECT * FROM usuario WHERE user = '$user' AND pass = '$pass'";
+                        $result = mysqli_query($enlace, $sql);
+                        $a_usuario = mysqli_fetch_array($result, MYSQLI_ASSOC);
+                    
+                        if ($a_usuario != null) {
+                            
+                            //inicio de session
+                            session_start();
+                            $_SESSION['user'] = $a_usuario['user'];
+                            
+                            $nombre = $a_usuario['nombre'];
+                            MensajeEmergente("Bienvenido $nombre!", "verde");
+                            
+                            include('user.php');
+                            
+                        } else {
+                            
+                            MensajeEmergente("Datos incorrectos", "rojo");
+                            include('login.php');
+                            
+                        }
+                        
                     } else {
-                        MensajeEmergente("Datos incorrectos", "rojo");
+                        
                         include('login.php');
+                        
                     }
-                } else {
-                    include('login.php');
                 }
-               
+  
             ?>
 

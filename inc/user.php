@@ -16,7 +16,7 @@
                                 <p> <a href="perfil.php" class="btn btn-primary btn-lg btn-block">Perfil</a> </p>
                                 <p> <a href="edit_categoria.php" class="btn btn-primary btn-lg btn-block">Categorias</a> </p>
                                 <p> <a href="edit_producto.php" class="btn btn-primary btn-lg btn-block">Productos</a> </p>
-                                <p> <a href="index.php" class="btn btn-danger btn-lg btn-block">LogOut</a> </p>
+                                <p> <a href="inc/logout.php" class="btn btn-danger btn-lg btn-block">LogOut</a> </p>
                             </div>
                         </div>
                     </div>

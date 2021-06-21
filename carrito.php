@@ -38,6 +38,13 @@
                     <p class='zapas'>Carrito de compras vacío.</p>
                 </div>
             </div>";
+    } else if (!$_SESSION['user']) {
+        echo 
+            "<div class='jumbotron jumbotron-fluid'>
+                <div class='container empty-cart'>
+                    <p class='zapas'> Debe loguarse para terminar la compra. </p>
+                </div>
+            </div>";
     } else {
         $total = 0;
         foreach ($a_carrito as $a_producto) { //Recorro el array y extraigo cada producto
@@ -67,7 +74,7 @@
                 <div class="col-sm-3 thumb">
                     <div class="card">
                         <h3 class="card-title producto"><?php echo $pr_nom ?></h3>
-                        <p class="card-text precio">$<?php echo $pr_pre ?></p>
+                        <p class="card-text precio">$<?php echo number_format($pr_pre, 2, ',', '.'); ?></p>
                         <p class="card-text precio"><?php echo "Talle: $pr_talle" ?></p>
                     </div>
                 </div>
@@ -79,7 +86,7 @@
         ?>
         <div class="row">
             <div class="col-sm-12">
-                <h4 class="text-center titindex verde">Total: $<?php echo $total ?></h4>
+                <h4 class="text-center titindex verde">Total: $<?php echo number_format($total, 2, ',', '.'); ?></h4>
             </div>
         </div>
 </main>

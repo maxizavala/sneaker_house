@@ -25,7 +25,7 @@ if ($_POST != null) {
         // Mensaje comentario recibido
         MensajeEmergente("Gracias por dejarnos un mensaje!", "amarillo");
 
-        $mail = $_POST['correo'];
+        $usuario = $_SESSION['user'];
         $msj = $_POST['mensaje'];
         $val = $_POST['valoracion'];
 
@@ -33,7 +33,7 @@ if ($_POST != null) {
         // Guarda el nuevo comentario en el JSON
         $a_comentarios = LeerArrayJson('json', 'comentarios.json');
         $a_comentarios[] = [
-            "correo" => "$mail",
+            "usuario" => "$usuario",
             "mensaje" => "$msj",
             "id_producto" => "$id_prod",
             "valoracion" => "$val",
@@ -45,8 +45,8 @@ if ($_POST != null) {
         // Mensaje producto agregado al carrito
         MensajeEmergente("Se agrego el producto a tu carrito !!", "verde");
 
+        $usuario = $_SESSION['user'];
         $talle = $_POST['talle'];
-        $usuario = "usuario@gmail.com";
 
         $a_carrito = LeerArrayJson('json', 'carrito.json');
         $a_carrito[] = [
@@ -77,12 +77,12 @@ if ($_POST != null) {
             $modelo = $a_producto['modelo'];
             $categoria = MostrarCategoria('json', 'categorias.json', $a_producto['categoria']); //String de la categoria
             $descripcion = $a_producto['descripcion'];
-            $precio = $a_producto['precio'];
+            $precio = number_format($a_producto['precio'], 2, ',', '.');
 
             echo "<h1 class='titindex mt-5'>$marca $modelo</h1>";
             echo "<p class='pr-md-4'> <em><b> $categoria </b></em> </p>";
             echo "<p class='pr-md-4'>$descripcion</p>";
-            echo "<p class='pr-md-4'> <h3> $$precio,00 </h3> </p>";
+            echo "<p class='pr-md-4'> <h3> $$precio </h3> </p>";
             ?>
 
             <!-- CARRITO DE COMPRAS -------------------------------- -->
@@ -118,14 +118,11 @@ if ($_POST != null) {
 
             <form action="" method="post">
                 <div class="form-group">
-                    <input type="email" name="correo" placeholder="Mail_" required class="rounded-pill border-0 colorform py-1 px-2">
-                </div>
-                <div class="form-group">
-                    <textarea name="mensaje" cols="30" rows="10" required placeholder="Comentario_" class="rounded-lg border-0 colorform py-1 px-2"></textarea>
+                    <textarea name="mensaje" cols="30" rows="10" required placeholder="Comentario_" <?php if(!$_SESSION['user']) { echo "disabled"; } ?> class="rounded-lg border-0 colorform py-1 px-2"></textarea>
                 </div>
                 <div class="form-group">
                     Valoración:<br>
-                    <select name="valoracion" required class="rounded-pill border-0 colorform py-1 px-2">
+                    <select name="valoracion" required <?php if(!$_SESSION['user']) { echo "disabled"; } ?> class="rounded-pill border-0 colorform py-1 px-2">
                         <option value="5">5</option>
                         <option value="4">4</option>
                         <option value="3">3</option>
@@ -136,7 +133,7 @@ if ($_POST != null) {
 
                 <input type="hidden" name="id_prod" value="<?php echo $id_producto; ?>">
 
-                <input type="submit" value="" id="botonimagen" class="img-fluid mb-5">
+                <input type="submit" value="" id="botonimagen" <?php if(!$_SESSION['user']) { echo "disabled"; } ?> class="img-fluid mb-5">
                 <input type="hidden" name="tipo" value="comentario">
             </form>
 
