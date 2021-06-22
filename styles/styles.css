@@ -221,3 +221,8 @@ body{
 .verde{
     color: #227335;
 }
+.subtit{
+    font-size: 1.4em;
+    font-family: 'Roboto', sans-serif;  
+    text-align: center;
+}

@@ -36,8 +36,6 @@
             $sql = "INSERT INTO `usuario` (`user`, `pass`, `email`, `telefono`, `nombre`, `fec_nacimiento`, `direccion`, `localidad`, `cp`)
                 VALUES ('$user', '$pass', '$mail', '$tel', '$nombre', '$fec_nac', '$direccion', $ciudad, $cp)";
             $result = mysqli_query($enlace, $sql);
-
-    
     ?>
 
     <div class='jumbotron jumbotron-fluid'>

@@ -3,8 +3,8 @@
 <?php 
     include('inc/header.php');
     include_once('inc/funciones.php');
-    include('inc/connect.php');
     include_once('inc/carrousel.php'); 
+    include('inc/connect.php');
 ?>
 
 

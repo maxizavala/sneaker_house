@@ -40,6 +40,7 @@ if ($_POST != null) {
             "fecha" => "$fec"
         ];
         GuardarArrayEnJson('json', 'comentarios.json', $a_comentarios);
+        
     } else if ($tipo == 'carrito') { //Agregar al carrito
 
         // Mensaje producto agregado al carrito
@@ -68,21 +69,21 @@ if ($_POST != null) {
     <div class="row mb-3">
         <div class="col-sm-12 col-md-6">
             <?php //Muestra el detalle de cada producto.
-            $sql = "SELECT * FROM producto WHERE id_producto = '$id_producto'";
-            $result = mysqli_query($enlace, $sql);
-            $a_producto = mysqli_fetch_array($result, MYSQLI_ASSOC);
+                $sql = "SELECT * FROM producto WHERE id_producto = '$id_producto'";
+                $result = mysqli_query($enlace, $sql);
+                $a_producto = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
-            // Elementos del array
-            $marca = $a_producto['marca'];
-            $modelo = $a_producto['modelo'];
-            $categoria = MostrarCategoria('json', 'categorias.json', $a_producto['categoria']); //String de la categoria
-            $descripcion = $a_producto['descripcion'];
-            $precio = number_format($a_producto['precio'], 2, ',', '.');
+                // Elementos del array
+                $marca = $a_producto['marca'];
+                $modelo = $a_producto['modelo'];
+                $categoria = MostrarCategoria('json', 'categorias.json', $a_producto['categoria']); //String de la categoria
+                $descripcion = $a_producto['descripcion'];
+                $precio = number_format($a_producto['precio'], 2, ',', '.');
 
-            echo "<h1 class='titindex mt-5'>$marca $modelo</h1>";
-            echo "<p class='pr-md-4'> <em><b> $categoria </b></em> </p>";
-            echo "<p class='pr-md-4'>$descripcion</p>";
-            echo "<p class='pr-md-4'> <h3> $$precio </h3> </p>";
+                echo "<h1 class='titindex mt-5'>$marca $modelo</h1>";
+                echo "<p class='pr-md-4'> <em><b> $categoria </b></em> </p>";
+                echo "<p class='pr-md-4'>$descripcion</p>";
+                echo "<p class='pr-md-4'> <h3> $$precio </h3> </p>";
             ?>
 
             <!-- CARRITO DE COMPRAS -------------------------------- -->
