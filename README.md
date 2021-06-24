@@ -7,7 +7,7 @@ Da Vinci -  WEB2 final => php+bootstrap
 03 - Home: Categorias y Productos.  
 04 - Detalle de producto.  
 05 - Login de Usuarios.  
-06 - Registro de nuevos Usuarios. 
+06 - Registro de nuevos Usuarios.  
 07 - Edit de productos.  
 
 ## UNCHECK
