@@ -7,7 +7,8 @@ Da Vinci -  WEB2 final => php+bootstrap
 03 - Home: Categorias y Productos.  
 04 - Detalle de producto.  
 05 - Login de Usuarios.  
-06 - Registro de nuevos Usuarios.  
+06 - Registro de nuevos Usuarios. 
+07 - Edit de productos.  
 
 ## UNCHECK
 ### VICKY
@@ -21,7 +22,7 @@ Da Vinci -  WEB2 final => php+bootstrap
     . edit direccion.  
     . edit localidad.  
     . edit CP.  
-    . muestra productos favoritos (los que tienen like).  
+02 - Productos favoritos (los que tienen like) en perfil.php  
     
 ### MAXI
 01 - Pagina Admin (Se muestra solo si el usuario logueado es ADMIN).  
