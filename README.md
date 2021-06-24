@@ -12,7 +12,7 @@ Da Vinci -  WEB2 final => php+bootstrap
 
 ## UNCHECK
 ### VICKY
-01 - Pagina perfil de usuario (perfil.php). Se muestra solo al loguarse
+01 - Pagina perfil de usuario (perfil.php). Se muestra solo al loguarse.  
     . edit user.  
     . edit pass.  
     . edit email.  
