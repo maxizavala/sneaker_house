@@ -2,42 +2,53 @@
 <?php 
   include('inc/header.php'); 
   include_once('inc/funciones.php'); 
+  include('inc/connect.php');
 ?>
 
 <?php
-  if ($_POST['mensaje'] != null) {
 
-    // Mensaje contacto recibido
-    MensajeEmergente("Gracias por contactarse con nosotros!", "amarillo");
+    // Datos de la BD
+    $sql =  "SELECT * FROM sitio";
+    $result = mysqli_query($enlace, $sql);
+    $a_sitio = mysqli_fetch_array($result, MYSQLI_ASSOC);
+    $telefono = $a_sitio['telefono'];
+    $direccion = $a_sitio['direccion'];
+    $horario = $a_sitio['horario'];
 
-    $name = $_POST['nombre'];
-    $mail = $_POST['correo'];
-    $tlf = $_POST['telefono'];
-    $dept = $_POST['departamento'];
-    $msj = $_POST['mensaje'];
-        
-    $a_contacto = LeerArrayJson('json', 'contactos.json');
-    $a_contacto[]= [ "nombre" => "$name",
-                      "correo" => "$mail",
-                      "telefono" => "$tlf",
-                      "departamento" => "$dept",
-                      "mensaje" => "$msj"];
-    GuardarArrayEnJson('json','contactos.json',$a_contacto);
+    // Nuevos mensajes
+    if ($_POST['mensaje'] != null) {
 
-  }
+        // Mensaje contacto recibido
+        MensajeEmergente("Gracias por contactarse con nosotros!", "amarillo");
+
+        $name = $_POST['nombre'];
+        $mail = $_POST['correo'];
+        $tlf = $_POST['telefono'];
+        $dept = $_POST['departamento'];
+        $msj = $_POST['mensaje'];
+            
+        $a_contacto = LeerArrayJson('json', 'contactos.json');
+        $a_contacto[]= [ "nombre" => "$name",
+                        "correo" => "$mail",
+                        "telefono" => "$tlf",
+                        "departamento" => "$dept",
+                        "mensaje" => "$msj"];
+        GuardarArrayEnJson('json','contactos.json',$a_contacto);
+
+    }
 ?>
 
   <div class="container p-4 bg-white">
     <div class="row">
      
       <section class="col-md-7 thumb">      
-       <h1 class="titcont">0810-666-3400</h1>       
+       <h1 class="titcont"> <?php echo $telefono; ?> </h1>       
        <p class="italica">Nos encontramos en la zona de Palermo Soho.</p>
           <figure class="thumbmapa">
                 <img src="imagenes/mapa.jpg" alt="Mapa" width="700" height="500" class="rounded img-fluid">
             </figure>            
-                <p class="dire">Honduras 4916 - Palermo - Capital Federal - Buenos Aires</p>                       
-                <p class="hora">Abrimos de Lunes a Sábados - de 10 a 21hs</p>       
+                <p class="dire"> <?php echo "Nos encontramos en: $direccion"; ?> </p>                       
+                <p class="hora"> <?php echo "Nuestro horario: $horario"; ?> </p>       
             </section>
             
         <aside class="col-md-5">

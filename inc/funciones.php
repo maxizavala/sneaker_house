@@ -127,5 +127,11 @@
             </div>";
     }
 
+    //Funcion like-dislike
+    function likeDislike($articulo, $usuario){
+        include('inc/connect.php');
+        
+    }
+
     
 ?>

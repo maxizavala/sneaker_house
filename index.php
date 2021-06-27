@@ -82,9 +82,12 @@
                 <div class="card">
                     <a href="producto.php?id=<?php echo $pr_id ?>" class="mx-auto"><img src="<?php echo $pr_ima ?>" alt="<?php echo $pr_nom ?>" width="350" height="250" class="rounded img-fluid shadow"></a>
                     <div class="card-body p-2 anchocard mx-auto img-fluid">
-                        <h3 class="card-title producto"><?php echo $pr_nom ?></h3>
+                        <h3 class="card-title producto">
+                            <img src="imagenes/iconos/dislike.png" width="25" height="25">
+                            <?php echo $pr_nom ?>
+                        </h3>
                         <p class="card-text precio">$<?php echo $pr_pre ?></p>
-                        <p class="card-text"><?php echo substr($pr_des, 0, 20) ?> ...(+)</p>
+                        <p class="card-text"> <?php echo substr($pr_des, 0, 30)."..."; ?> </p>
                     </div>
                 </div>
             </div>
@@ -106,9 +109,12 @@
                 <div class="card">
                     <a href="producto.php?id=<?php echo $pr_id ?>" class="mx-auto"><img src="<?php echo $pr_ima ?>" alt="<?php echo $pr_nom ?>" width="350" height="250" class="rounded img-fluid shadow"></a>
                     <div class="card-body p-2 anchocard mx-auto img-fluid">
-                        <h3 class="card-title producto"><?php echo $pr_nom ?></h3>
+                        <h3 class="card-title producto"> 
+                            <img src="imagenes/iconos/dislike.png" width="25" height="25">
+                            <?php echo $pr_nom ?> 
+                        </h3>
                         <p class="card-text precio">$<?php echo $pr_pre ?></p>
-                        <p class="card-text"><?php echo substr($pr_des, 0, 20) ?> ...(+)</p>
+                        <p class="card-text"> <?php echo substr($pr_des, 0, 30)."..."; ?> </p>
                     </div>
                 </div>
             </div>

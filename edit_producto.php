@@ -111,7 +111,7 @@
                             </tr>
                             <tr>
                                 <td> <b>Descripción:</b> </td> 
-                                <td> <textarea name="descripcion" cols="30" rows="10" required class="rounded-lg border-0 colorform py-1 px-2"> <?php echo $descripcion ?> </textarea> </td>
+                                <td> <textarea name="descripcion" cols="30" rows="10" required class="rounded-lg border-0 colorform py-1 px-2"> <?php echo "$descripcion" ?> </textarea> </td>
                             </tr>
                             <tr>
                                 <td colspan=2 style="text-align: center;"> 
