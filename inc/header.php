@@ -11,13 +11,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="keywords" content="zapatillas, calzado, zapas, nike, adidas">
         <meta name="description" content="Tienda on-line de zapatillas">
-        <meta name="author" content="Zavala, Juarez, Alvarado">
         <!-- Bootstrap, CSS y Google Fonts-->
         <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="styles/styles.css">
         <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:ital,wght@0,500;0,700;0,900;1,500;1,700;1,900&display=swap" rel="stylesheet">
         <title> <?php echo EtiquetaTitle(); ?> </title>
     </head>
+
+    <?php
+        // Titulo de la BD
+        $sql =  "SELECT subtitulo FROM sitio";
+        $result = mysqli_query($enlace, $sql);
+        $a_sitio = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        $subtitulo = $a_sitio['subtitulo'];
+    ?>
   
     <body>
         <nav class="navbar navbar-expand-md navbar-dark" id="navcolor">
@@ -26,7 +33,7 @@
                 <a class="navbar-brand fontmarca" href="index.php">SNEAKER HOUSE</a>
 
                 <div class="col-auto px-0">
-                    <p class="foottex mt-4 text-white">Venta de Zapatillas</p>
+                    <p class="foottex mt-4 text-white"> <?php echo $subtitulo; ?> </p>
                 </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -60,21 +67,21 @@
 
             <!-- VENTANA MODAL LOGIN ======================================================================================= -->
             <?php
-
-                session_start();
                                 
-                if($_SESSION['user']) {
+                if(isset($_SESSION['user'])) {
                     
-                    include('user.php');
+                    include('menu.php');
                     
                 } 
                 else {
                     
-                    if ($_POST['user'] != null && $_POST['pass'] != null) {
+                    if (isset($_POST['user']) != null && isset($_POST['pass']) != null) {
                     
                         $user = $_POST['user'];
                         $pass = $_POST['pass'];
-                        $sql = "SELECT * FROM usuario WHERE user = '$user' AND pass = '$pass'";
+
+                        $sql = "SELECT usuario.user as user, usuario.nombre as nombre, tipo_usuario.tipo as tipo FROM usuario INNER JOIN tipo_usuario ON tipo_usuario.tipo = usuario.tipo WHERE usuario.user = '$user' AND usuario.pass = '$pass'";
+
                         $result = mysqli_query($enlace, $sql);
                         $a_usuario = mysqli_fetch_array($result, MYSQLI_ASSOC);
                     
@@ -83,11 +90,12 @@
                             //inicio de session
                             session_start();
                             $_SESSION['user'] = $a_usuario['user'];
+                            $_SESSION['tipo'] = $a_usuario['tipo'];
+                            $_SESSION['nombre'] = $a_usuario['nombre'];
                             
-                            $nombre = $a_usuario['nombre'];
-                            MensajeEmergente("Bienvenido $nombre!", "verde");
+                            MensajeEmergente("Bienvenido ".$_SESSION['nombre']."!", "verde");
                             
-                            include('user.php');
+                            include('menu.php');
                             
                         } else {
                             

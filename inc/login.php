@@ -17,7 +17,7 @@
                                 <p>Contraseña: </p>
                             </div>
                             <div class="modal-body">
-                                <p> <input type="text" name="user" required minlength="4" maxlength="8" size="10"></p>
+                                <p> <input type="text" name="user" required minlength="4" maxlength="8" size="10" autocomplete="off"></p>
                                 <p> <input type="password" name="pass" required minlength="4" maxlength="8" size="10"></p>
                             </div>
                         </div>

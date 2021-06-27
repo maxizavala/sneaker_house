@@ -35,6 +35,7 @@
 
             $sql = "INSERT INTO `usuario` (`user`, `pass`, `email`, `telefono`, `nombre`, `fec_nacimiento`, `direccion`, `localidad`, `cp`)
                 VALUES ('$user', '$pass', '$mail', '$tel', '$nombre', '$fec_nac', '$direccion', $ciudad, $cp)";
+                
             $result = mysqli_query($enlace, $sql);
     ?>
 
@@ -78,7 +79,8 @@
                     <input type="text" name="cp" placeholder="Código postal" required class="rounded-pill border-0 colorform py-1 px-2">
                 </div>
                 <div>
-                    <?php
+
+                    <?php // menu localidad
                         $lcl = mysqli_query($enlace, "SELECT * FROM localidad");
                         echo "<select name='localidad' required class='rounded-pill border-0 colorform py-1 px-2'>";
                         echo "<option value=''> </option>";
