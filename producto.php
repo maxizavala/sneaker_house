@@ -36,15 +36,11 @@
 
 <main class="container p-4 bg-white">
 
-    <header class="row container">
-        <div class="col-sm-12 px-0">
-            <h1 class="titindex "> <?php echo "$marca $modelo"; ?> </h1>
-        </div>
-    </header>
-
         <div class="row mb-3">
             <div class="col-sm-12 col-md-6">
+                <h1 class="titindex "> <?php echo "$marca $modelo"; ?> </h1>
                 <?php echo "<p class='pr-md-4'>$descripcion</p>"; ?>
+                <?php echo "<p class='pr-md-4'> <h3> $$precio </h3> </p>"; ?>
             </div>
 
             <figure class="col-sm-12 col-md-6 der thumb">
@@ -55,16 +51,19 @@
         </div>
 
         <div class="row">
-            <div class="col-sm-12 col-md-6">
+
+            <div class="col-sm-0 col-md-4"> </div>
+
+            <div class="col-sm-12 col-md-4">
                 <form action="" method="post">
+                    <label> Seleccione un talle: </label><br>
                     <?php TalleSegunCategoria($categoria); ?>
                     <br><br> <input type="submit" value="Agregar al Carrito" class="btn btn-primary">
                 </form>
             </div>
 
-            <figure class="col-sm-12 col-md-6 der thumb">
-                <?php echo "<p class='pr-md-4'> <h3> $$precio </h3> </p>"; ?>
-            </figure>                
+            <div class="col-sm-0 col-md-4"> </div> 
+                           
         </div>
 
 </main>

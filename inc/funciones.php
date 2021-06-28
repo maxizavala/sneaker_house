@@ -98,7 +98,7 @@
         elseif ($categoria == 3){
             $min = 27; $max = 34;
         }
-        echo "Seleccione un talle: <select name='talle'>";
+        echo "<select name='talle' class='form-control'>";
             for ($i=$min; $i <= $max ; $i++) { 
                 echo "<option>$i</option>";
             }   

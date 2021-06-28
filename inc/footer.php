@@ -1,3 +1,12 @@
+<?php
+    // links Redes Sociales
+    $sql =  "SELECT facebook, instagram FROM sitio";
+    $result = mysqli_query($enlace, $sql);
+    $a_sitio = mysqli_fetch_array($result, MYSQLI_ASSOC);
+    $link_fb = $a_sitio['facebook'];
+    $link_ig = $a_sitio['instagram'];
+?>
+
 </div>
 <footer class="pb-4 pl-3 pl-md-0 py-md-0 ">
     <div class="container">
@@ -6,7 +15,8 @@
                 <p class="foottex mt-4">Juarez Francisco - Seinhart Victoria - Zavala Maximiliano</p>
             </div>
             <div class="col-auto my-auto">
-                <p class="foottex mt-4">Grupo Nº1 - Producción Web - ACM3A - Año 2021</p>
+                <a href='http://<?php echo $link_fb; ?>'> <img src="imagenes/iconos/fb.png" width="25" height="25" alt="facebook"> </a>
+                <a href='http://<?php echo $link_ig; ?>'> <img src="imagenes/iconos/ig.png" width="25" height="25" alt="instagram"> </a>
             </div>
         </div>
     </div>

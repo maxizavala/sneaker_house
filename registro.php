@@ -48,53 +48,64 @@
     <?php } else { ?>
 
     <div class="container p-4 bg-white">
-    <div class="row">
-        <div class="col-sm-3">
-        </div>
-        <div class="col-sm-6">
-            <h2 class="italica mb-3">Ingresá tus datos para registrarte</h2>
+        <div class="row">
+            <div class="col-sm-0 col-md-3">
+            </div>
 
-            <form action="" method="post">
-                <div class="form-group">
-                    <input type="text" name="usuario" placeholder="Elegí un usuario" required class="rounded-pill border-0 colorform py-1 px-2">
-                    <input type="password" name="password" placeholder="Elegí una contraseña" required class="rounded-pill border-0 colorform py-1 px-2">
-                </div>
-                <div class="form-group">
-                    <input type="email" name="email" placeholder="Tu email" required class="rounded-pill border-0 colorform py-1 px-2">
-                    <input type="tel" name="telefono" placeholder="Tu telefono" required class="rounded-pill border-0 colorform py-1 px-2">
-                </div>
-                <div>    
-                    <input type="text" name="nombre" placeholder="Tu nombre" required class="rounded-pill border-0 colorform py-1 px-2">
-                    <input type="date" name="fec_nacimiento" required class="rounded-pill border-0 colorform py-1 px-2">
-                </div>
-                <br>
-                <p> Datos de entrega: </p>
-                <div>
-                <div class="form-group">
-                    <input type="text" name="calle" placeholder="Calle" required class="rounded-pill border-0 colorform py-1 px-2">
-                    <input type="text" name="altura" placeholder="Número" required class="rounded-pill border-0 colorform py-1 px-2">
-                </div>
-                <div class="form-group">
-                    <input type="text" name="piso-dto" placeholder="Piso y departamento" class="rounded-pill border-0 colorform py-1 px-2">
-                    <input type="text" name="cp" placeholder="Código postal" required class="rounded-pill border-0 colorform py-1 px-2">
-                </div>
-                <div>
+            <div class="col-sm-12 col-md-6">
+                <h2 class="italica mb-3">Ingresá tus datos para registrarte</h2>
 
-                    <?php // menu localidad
-                        $lcl = mysqli_query($enlace, "SELECT * FROM localidad");
-                        echo "<select name='localidad' required class='rounded-pill border-0 colorform py-1 px-2'>";
-                        echo "<option value=''> </option>";
-                            while($row = mysqli_fetch_array($lcl)) {
-                                echo "<option value='".$row[0]."'>".$row[1]."</option>"; }
-                        echo "</select> </td>";
-                    ?>
+                <form action="" method="post">
+                    <div class="form-group">
+                        <input type="text" name="usuario" placeholder="Elegí un usuario" required class="rounded-pill border-0 colorform py-1 px-2">
+                        <input type="password" name="password" placeholder="Elegí una contraseña" required class="rounded-pill border-0 colorform py-1 px-2">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Tu email" required class="rounded-pill border-0 colorform py-1 px-2">
+                        <input type="tel" name="telefono" placeholder="Tu telefono" required class="rounded-pill border-0 colorform py-1 px-2">
+                    </div>
+
+                    <div>    
+                        <input type="text" name="nombre" placeholder="Tu nombre" required class="rounded-pill border-0 colorform py-1 px-2">
+                        <input type="date" name="fec_nacimiento" required class="rounded-pill border-0 colorform py-1 px-2">
+                    </div>
+
+                    <br>
+                    <p> Datos de entrega: </p>
                     
-                </div>
-                <div>
-                <div class="form-group mt-4">
-                    <input type="submit" name="submit" value="Guardar" class="btn btn-primary">
-                </div>
-            </form>
+                    <div class="form-group">
+                        <input type="text" name="calle" placeholder="Calle" required class="rounded-pill border-0 colorform py-1 px-2">
+                        <input type="text" name="altura" placeholder="Número" required class="rounded-pill border-0 colorform py-1 px-2">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" name="piso-dto" placeholder="Piso y departamento" class="rounded-pill border-0 colorform py-1 px-2">
+                        <input type="text" name="cp" placeholder="Código postal" required class="rounded-pill border-0 colorform py-1 px-2">
+                    </div>
+
+                    <div>
+                        <?php // menu localidad
+                            $lcl = mysqli_query($enlace, "SELECT * FROM localidad");
+                            echo "<select name='localidad' required class='rounded-pill border-0 colorform py-1 px-2'>";
+                            echo "<option value=''> </option>";
+                                while($row = mysqli_fetch_array($lcl)) {
+                                    echo "<option value='".$row[0]."'>".$row[1]."</option>"; }
+                            echo "</select> </td>";
+                        ?>  
+                    </div>
+
+                    <div class="form-group mt-4">
+                        <input type="submit" name="submit" value="Guardar" class="btn btn-primary">
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-sm-0 col-md-3">
+            </div>
+
+        </div>        
+    </div>
 
     <?php } ?>
 
