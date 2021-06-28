@@ -89,16 +89,16 @@
 
     //Talles segun categoria
     function TalleSegunCategoria($categoria){
-        if ($categoria == 'Hombre') {
+        if ($categoria == 1) {
             $min = 40; $max = 45;
         }
-        elseif ($categoria == 'Mujer'){
+        elseif ($categoria == 2){
             $min = 35; $max = 40;
         }
-        elseif ($categoria == 'Kid'){
+        elseif ($categoria == 3){
             $min = 27; $max = 34;
         }
-        echo "<select name='talle' class='form-control'>";
+        echo "Seleccione un talle: <select name='talle'>";
             for ($i=$min; $i <= $max ; $i++) { 
                 echo "<option>$i</option>";
             }   
