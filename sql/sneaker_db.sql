@@ -168,7 +168,7 @@ CREATE TABLE IF NOT EXISTS `carrito` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
--- GRANT ALL ON `sneaker_house`.* TO 'admin';
+GRANT ALL ON `sneaker_house`.* TO 'admin';
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
@@ -237,6 +237,8 @@ INSERT INTO `usuario` (`tipo`, `user`, `pass`, `email`, `telefono`, `nombre`, `f
 VALUES ('admin', 'zeta', 'dv01', 'maximiliano.zavala@davinci.edu.ar', '1122334455', 'Maxi', '1986-05-12', 'Av Rivadavia 67890 3A', 1, 1345);
 INSERT INTO `usuario` (`tipo`, `user`, `pass`, `email`, `telefono`, `nombre`, `fec_nacimiento`, `direccion`, `localidad`, `cp`) 
 VALUES ('comun', 'pepe', 'dv01', 'beto@gmail.com', '1133445533', 'Jose', '1990-06-15', 'Uruguay 6325', 2, 2020);
+INSERT INTO `usuario` (`tipo`, `user`, `pass`, `email`, `telefono`, `nombre`, `fec_nacimiento`, `direccion`, `localidad`, `cp`) 
+VALUES ('comun', 'sandra', 'dv01', 'sandrita@gmail.com', '1188776622', 'Sandra', '1995-02-25', 'Asuncion 345 1A', 3, 2133);
 
 -- -----------------------------------------------------
 -- Data for table `sitio`
@@ -262,8 +264,10 @@ INSERT INTO `likes` (`producto`, `usuario`) VALUES (18, 1);
 INSERT INTO `likes` (`producto`, `usuario`) VALUES (19, 1);
 INSERT INTO `likes` (`producto`, `usuario`) VALUES (20, 1);
 
-SELECT likes.producto FROM likes INNER JOIN usuario ON usuario.id_usuario = likes.usuario WHERE usuario.user = 'zeta';
 
+SET SQL_SAFE_UPDATES = 0;
+
+SELECT * FROM usuario WHERE user = 'pepe';
 
 COMMIT;
 
