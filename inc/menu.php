@@ -12,8 +12,8 @@
                     <div class="row">
                         <div class="modal-body">
                             <p> <a href="perfil.php" class="btn btn-primary btn-lg btn-block">Perfil</a> </p>
-                            <p> <a href="edit_producto.php" class="btn btn-primary btn-lg btn-block <?php if($_SESSION['tipo'] != 'admin') { echo "disabled"; } ?>">Editar Productos</a> </p>
-                            <p> <a href="admin.php" class="btn btn-primary btn-lg btn-block <?php if($_SESSION['tipo'] != 'admin') { echo "disabled"; } ?>">Editar Sitio</a> </p>
+                            <p> <a href="edit_producto.php" class="btn btn-primary btn-lg btn-block" <?php if($_SESSION['tipo'] != 'admin') { echo "hidden"; } ?>>Editar Productos</a> </p>
+                            <p> <a href="admin.php" class="btn btn-primary btn-lg btn-block" <?php if($_SESSION['tipo'] != 'admin') { echo "hidden"; } ?>>Editar Sitio</a> </p>
                             <p> <a href="inc/logout.php" class="btn btn-danger btn-lg btn-block">Salir</a> </p>
                         </div>
                     </div>

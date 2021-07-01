@@ -103,12 +103,12 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `like`
+-- Table `likes`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `like` ;
+DROP TABLE IF EXISTS `likes` ;
 
-CREATE TABLE IF NOT EXISTS `like` (
-  `id_like` INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `likes` (
+  `id_like` INT NOT NULL AUTO_INCREMENT,
   `producto` INT NOT NULL,
   `usuario` INT NOT NULL,
   PRIMARY KEY (`id_like`),
@@ -131,11 +131,15 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `sitio` ;
 
 CREATE TABLE IF NOT EXISTS `sitio` (
-  `titulo` VARCHAR(20) NULL,
-  `instagram` VARCHAR(45) NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `subtitulo` VARCHAR(45) NULL,
   `facebook` VARCHAR(45) NULL,
-  `twitter` VARCHAR(45) NULL,
-  `email_contacto` VARCHAR(45) NULL)
+  `instagram` VARCHAR(45) NULL,
+  `telefono` VARCHAR(45) NULL,
+  `direccion` VARCHAR(45) NULL,
+  `horario` VARCHAR(45) NULL,
+  `email_contacto` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 
@@ -164,7 +168,7 @@ CREATE TABLE IF NOT EXISTS `carrito` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-GRANT ALL ON `sneaker_house`.* TO 'admin';
+-- GRANT ALL ON `sneaker_house`.* TO 'admin';
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
@@ -233,6 +237,32 @@ INSERT INTO `usuario` (`tipo`, `user`, `pass`, `email`, `telefono`, `nombre`, `f
 VALUES ('admin', 'zeta', 'dv01', 'maximiliano.zavala@davinci.edu.ar', '1122334455', 'Maxi', '1986-05-12', 'Av Rivadavia 67890 3A', 1, 1345);
 INSERT INTO `usuario` (`tipo`, `user`, `pass`, `email`, `telefono`, `nombre`, `fec_nacimiento`, `direccion`, `localidad`, `cp`) 
 VALUES ('comun', 'pepe', 'dv01', 'beto@gmail.com', '1133445533', 'Jose', '1990-06-15', 'Uruguay 6325', 2, 2020);
+
+-- -----------------------------------------------------
+-- Data for table `sitio`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `sneaker_house`;
+INSERT INTO `sitio` (`subtitulo`, `facebook`, `instagram`, `telefono`, `direccion`, `horario`, `email_contacto`) 
+VALUES ('Venta de Zapatillas', 'www.facebook.com', 'www.instagram.com', '0800 999 6565', 'Malabia 1345 - Palermo - CABA', 'Lunes a Sábados - de 10 a 21hs', 'sneaker.house@gmail.com');
+
+-- -----------------------------------------------------
+-- Data for table `like`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `sneaker_house`;
+INSERT INTO `likes` (`producto`, `usuario`) VALUES (2, 1);
+INSERT INTO `likes` (`producto`, `usuario`) VALUES (4, 1);
+INSERT INTO `likes` (`producto`, `usuario`) VALUES (6, 1);
+INSERT INTO `likes` (`producto`, `usuario`) VALUES (8, 1);
+INSERT INTO `likes` (`producto`, `usuario`) VALUES (12, 1);
+INSERT INTO `likes` (`producto`, `usuario`) VALUES (14, 1);
+INSERT INTO `likes` (`producto`, `usuario`) VALUES (15, 1);
+INSERT INTO `likes` (`producto`, `usuario`) VALUES (18, 1);
+INSERT INTO `likes` (`producto`, `usuario`) VALUES (19, 1);
+INSERT INTO `likes` (`producto`, `usuario`) VALUES (20, 1);
+
+SELECT likes.producto FROM likes INNER JOIN usuario ON usuario.id_usuario = likes.usuario WHERE usuario.user = 'zeta';
 
 
 COMMIT;

@@ -15,8 +15,8 @@
                 <p class="foottex mt-4">Juarez Francisco - Seinhart Victoria - Zavala Maximiliano</p>
             </div>
             <div class="col-auto my-auto">
-                <a href='http://<?php echo $link_fb; ?>'> <img src="imagenes/iconos/fb.png" width="25" height="25" alt="facebook"> </a>
-                <a href='http://<?php echo $link_ig; ?>'> <img src="imagenes/iconos/ig.png" width="25" height="25" alt="instagram"> </a>
+                <a href='http://<?php echo $link_fb; ?>' target="_blank"> <img src="imagenes/iconos/fb.png" width="25" height="25" alt="facebook"> </a>
+                <a href='http://<?php echo $link_ig; ?>' target="_blank"> <img src="imagenes/iconos/ig.png" width="25" height="25" alt="instagram"> </a>
             </div>
         </div>
     </div>
