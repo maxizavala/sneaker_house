@@ -17,7 +17,7 @@
                 document.getElementById("txtHint").innerHTML = this.responseText;
             }
         };
-            xmlhttp.open("GET", "inc/sugerencias_art.php?q=" + str, true);
+            xmlhttp.open("GET", "inc/sugerencias.php?q=" + str, true);
             xmlhttp.send();
         }
     }

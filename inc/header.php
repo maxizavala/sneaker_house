@@ -19,7 +19,7 @@
     </head>
 
     <?php
-        // Titulo de la BD
+        // Titulo de la pagina leido desde BD 
         $sql =  "SELECT subtitulo FROM sitio";
         $result = mysqli_query($enlace, $sql);
         $a_sitio = mysqli_fetch_array($result, MYSQLI_ASSOC);
@@ -80,7 +80,7 @@
                         $user = $_POST['user'];
                         $pass = $_POST['pass'];
 
-                        $sql = "SELECT usuario.user as user, usuario.nombre as nombre, tipo_usuario.tipo as tipo FROM usuario INNER JOIN tipo_usuario ON tipo_usuario.tipo = usuario.tipo WHERE usuario.user = '$user' AND usuario.pass = '$pass'";
+                        $sql = "SELECT usuario.id_usuario as id, usuario.user as user, usuario.nombre as nombre, tipo_usuario.tipo as tipo FROM usuario INNER JOIN tipo_usuario ON tipo_usuario.tipo = usuario.tipo WHERE usuario.user = '$user' AND usuario.pass = '$pass'";
 
                         $result = mysqli_query($enlace, $sql);
                         $a_usuario = mysqli_fetch_array($result, MYSQLI_ASSOC);
@@ -92,6 +92,7 @@
                             $_SESSION['user'] = $a_usuario['user'];
                             $_SESSION['tipo'] = $a_usuario['tipo'];
                             $_SESSION['nombre'] = $a_usuario['nombre'];
+                            $_SESSION['id'] = $a_usuario['id'];
                             
                             MensajeEmergente("Bienvenido ".$_SESSION['nombre']."!", "verde");
                             

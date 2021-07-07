@@ -3,12 +3,26 @@
 <?php
     include('inc/header.php');
     include_once('inc/funciones.php');
-    include('inc/connect.php');
+    include('inc/connect.php');    
 
     // Si no hay un producto seleccionado (id) redirecciona al home
     $id_producto = $_GET['id'];
     if ($id_producto == null) {
         header('Location: index.php');
+    }
+
+    // id del usuario
+    if (isset($_SESSION)) {
+        $user = $_SESSION['id'];
+    }
+
+    // LIKES: Consulto en la BD si el producto tiene like
+    if (isset($_SESSION['user'])) {
+        $usuario = $_SESSION['user'];
+        $sql = "SELECT likes.producto AS producto FROM likes INNER JOIN usuario ON usuario.id_usuario = likes.usuario WHERE usuario.user = '$usuario' AND producto = $id_producto";
+        $result = mysqli_query($enlace, $sql); 
+        $a_likes = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        $like = $a_likes['producto'];
     }
 
     // Si recibe un POST..
@@ -58,7 +72,15 @@
                 <form action="" method="post">
                     <label> Seleccione un talle: </label><br>
                     <?php TalleSegunCategoria($categoria); ?>
-                    <br><br> <input type="submit" value="Agregar al Carrito" class="btn btn-primary">
+                    <br><br> 
+                    <input type="submit" value="Agregar al Carrito" class="btn btn-primary">
+
+                    <?php $like ? $heart = 'like' : $heart = 'dike'; ?>
+
+                    <button type="button" class="btn btn-link" onclick="functionLike('<?php echo $id_producto; ?>')">
+                        <img src="imagenes/iconos/<?php echo $heart ?>.png" width="35" height="35" id="<?php echo $id_producto; ?>">
+                    </button>
+
                 </form>
             </div>
 
@@ -70,5 +92,31 @@
 
 
 <?php include('inc/footer.php'); ?>
+
+<script>
+    function functionLike(id) {
+
+        var req = new XMLHttpRequest(); // Objeto que permite enviar/recibir datos
+        req.open('POST', 'inc/likes.php', true); // Peticion de datos por metodo GET
+        req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); // Codifica los datos enviados desde el server
+        req.onreadystatechange = function () { // Metodo que 'escucha' la respuesta del servidor
+        }
+
+        var img = document.getElementById(id).src; // Toma el nombre del archivo (like/dike)
+
+        if (img.slice(-8) == "like.png") {
+            document.getElementById(id).src='imagenes/iconos/dike.png';
+
+            var  data = 'id='+id+'&value=dike&user='+'<?php echo $user; ?>';
+            req.send(data); // Envio datos
+        }
+        else {
+            document.getElementById(id).src='imagenes/iconos/like.png';
+
+            var  data = 'id='+id+'&value=like&user='+'<?php echo $user; ?>';
+            req.send(data); // Envio datos
+        }
+    }
+</script>
 
 </html>

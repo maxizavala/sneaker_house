@@ -5,6 +5,11 @@
     include_once('inc/funciones.php');
     include_once('inc/carrousel.php'); 
     include('inc/connect.php');
+    
+    if (isset($_SESSION)) {
+        $user = $_SESSION['id'];
+    }
+    
 ?>
 
 
@@ -69,7 +74,7 @@
                 $a_likes = [];
                 if (isset($_SESSION['user'])) {
                     $usuario = $_SESSION['user'];
-                    $sql = "SELECT likes.producto FROM likes INNER JOIN usuario ON usuario.id_usuario = likes.usuario WHERE usuario.user = 'zeta'";
+                    $sql = "SELECT likes.producto FROM likes INNER JOIN usuario ON usuario.id_usuario = likes.usuario WHERE usuario.user = '$usuario'";
                     $result = mysqli_query($enlace, $sql);
                 
                     foreach ($result as $key => $value) {
@@ -100,10 +105,12 @@
                         <a href="producto.php?id=<?php echo $pr_id ?>" class="mx-auto"><img src="<?php echo $pr_ima ?>" alt="<?php echo $pr_nom ?>" width="350" height="250" class="rounded img-fluid shadow"></a>
                         <div class="card-body p-2 anchocard mx-auto img-fluid">
                             <h3 class="card-title producto">
-                                <button type="button" class="btn btn-link">
-                                    <?php in_array("$pr_id", $a_likes) ? $heart = 'like' : $heart = 'dike'; ?>
-                                    <img src="imagenes/iconos/<?php echo $heart ?>.png" width="25" height="25">
+                                <?php in_array("$pr_id", $a_likes) ? $heart = 'like' : $heart = 'dike'; ?>
+
+                                <button type="button" class="btn btn-link" onclick="functionLike('<?php echo $pr_id; ?>')">
+                                    <img src="imagenes/iconos/<?php echo $heart ?>.png" width="25" height="25" id="<?php echo $pr_id ?>">
                                 </button>
+
                                 <?php echo $pr_nom ?>
                             </h3>
                             <p class="card-text precio">$<?php echo $pr_pre ?></p>
@@ -131,9 +138,11 @@
                         <div class="card-body p-2 anchocard mx-auto img-fluid">
                             <h3 class="card-title producto"> 
                                 <?php in_array("$pr_id", $a_likes) ? $heart = 'like' : $heart = 'dike'; ?>
+
                                 <button type="button" class="btn btn-link" onclick="functionLike('<?php echo $pr_id; ?>')">
                                     <img src="imagenes/iconos/<?php echo $heart ?>.png" width="25" height="25" id="<?php echo $pr_id ?>">
                                 </button>
+
                                 <?php echo $pr_nom ?> 
                             </h3>
                             <p class="card-text precio">$<?php echo $pr_pre ?></p>
@@ -152,12 +161,26 @@
 
 <script>
     function functionLike(id) {
-        var img = document.getElementById(id).src;
+
+        var req = new XMLHttpRequest(); // Objeto que permite enviar/recibir datos
+        req.open('POST', 'inc/likes.php', true); // Peticion de datos por metodo GET
+        req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); // Codifica los datos enviados desde el server
+        req.onreadystatechange = function () { // Metodo que 'escucha' la respuesta del servidor
+        }
+
+        var img = document.getElementById(id).src; // Toma el nombre del archivo (like/dike)
+
         if (img.slice(-8) == "like.png") {
             document.getElementById(id).src='imagenes/iconos/dike.png';
+
+            var  data = 'id='+id+'&value=dike&user='+'<?php echo $user; ?>';
+            req.send(data); // Envio datos
         }
         else {
             document.getElementById(id).src='imagenes/iconos/like.png';
+
+            var  data = 'id='+id+'&value=like&user='+'<?php echo $user; ?>';
+            req.send(data); // Envio datos
         }
     }
 </script>
