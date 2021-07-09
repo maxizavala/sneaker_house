@@ -26,14 +26,30 @@
     }
 
     // Si recibe un POST..
-    if ($_POST['talle'] != null) {
+    if (isset($_POST['talle'])) {
 
         //Establece huso horario Argentina
         date_default_timezone_set('America/Argentina/Buenos_Aires');
-        $fec = date('o-m-d H:i:s');
+        $fec = date('Y-m-d');
 
-        // Mensaje producto agregado al carrito
-        MensajeEmergente("Se agrego el producto a tu carrito !!", "verde");        
+        if (!isset($_SESSION['user'])) {
+            // Mensaje de advertencia
+            MensajeEmergente("Primero debés iniciar sesión.", "rojo");
+        } else {
+            $userid = $_SESSION['id'];
+            $talle = $_POST['talle'];
+
+            $sqlinsert = "INSERT INTO `carrito` (`fecha`, `usuario`, `producto`, `talle`, `cantidad`)
+                          VALUES ('$fec', $userid, $id_producto, $talle, 1)";
+
+            $result = mysqli_query($enlace, $sqlinsert);
+
+            if ($result) {
+                // Mensaje producto agregado al carrito
+                MensajeEmergente("Se agrego el producto a tu carrito !!", "verde"); 
+            }
+
+        }
     }
 
     $sql = "SELECT * FROM producto WHERE id_producto = '$id_producto'";
@@ -69,6 +85,7 @@
             <div class="col-sm-0 col-md-4"> </div>
 
             <div class="col-sm-12 col-md-4">
+
                 <form action="" method="post">
                     <label> Seleccione un talle: </label><br>
                     <?php TalleSegunCategoria($categoria); ?>
@@ -78,12 +95,12 @@
                     <?php $like ? $heart = 'like' : $heart = 'dike'; ?>
 
                     <button type="button" class="btn btn-link" onclick="functionLike('<?php echo $id_producto; ?>')">
-                        <img src="imagenes/iconos/<?php echo $heart ?>.png" width="35" height="35" id="<?php echo $id_producto; ?>">
+                        <img src="imagenes/iconos/<?php echo $heart ?>.png" width="35" height="35" id="<?php echo $id_producto; ?>" <?php if (!isset($_SESSION['user'])) { echo "hidden"; } ?> >
                     </button>
-
                 </form>
-            </div>
 
+            </div>
+            
             <div class="col-sm-0 col-md-4"> </div> 
                            
         </div>

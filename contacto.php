@@ -3,6 +3,7 @@
   include('inc/header.php'); 
   include_once('inc/funciones.php'); 
   include('inc/connect.php');
+  include('inc/enviodemail.php');
 ?>
 
 <?php
@@ -16,25 +17,13 @@
     $horario = $a_sitio['horario'];
 
     // Nuevos mensajes
-    if ($_POST['mensaje'] != null) {
-
-        // Mensaje contacto recibido
-        MensajeEmergente("Gracias por contactarse con nosotros!", "amarillo");
+    if (isset($_POST['mensaje'])) {
 
         $name = $_POST['nombre'];
         $mail = $_POST['correo'];
         $tlf = $_POST['telefono'];
         $dept = $_POST['departamento'];
         $msj = $_POST['mensaje'];
-            
-        $a_contacto = LeerArrayJson('json', 'contactos.json');
-        $a_contacto[]= [ "nombre" => "$name",
-                        "correo" => "$mail",
-                        "telefono" => "$tlf",
-                        "departamento" => "$dept",
-                        "mensaje" => "$msj"];
-        GuardarArrayEnJson('json','contactos.json',$a_contacto);
-
     }
 ?>
 
@@ -68,15 +57,15 @@
                 </div>
                 <div class="form-group">
                   <select name="departamento" required class="rounded-pill border-0 colorform py-1 px-2">
-                    <option value="3">Ventas</option>
-                    <option value="2">Recursos Humanos</option>
-                    <option value="1">Quejas</option>
+                    <option value="Ventas">Ventas</option>
+                    <option value="Recursos Humanos">Recursos Humanos</option>
+                    <option value="Quejas">Quejas</option>
                   </select>
                 </div>  
                 <div class="form-group">
                 <textarea name="mensaje" cols="30" rows="10" required placeholder="Comentario_" class="rounded-lg border-0 colorform py-1 px-2"></textarea>
                 </div>
-                <input type="submit" value="" id="botonimagen" class="img-fluid">
+                <button type="submit" value="" id="botonimagen" class="img-fluid"></button>
             
             
             </form>

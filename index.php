@@ -107,7 +107,7 @@
                             <h3 class="card-title producto">
                                 <?php in_array("$pr_id", $a_likes) ? $heart = 'like' : $heart = 'dike'; ?>
 
-                                <button type="button" class="btn btn-link" onclick="functionLike('<?php echo $pr_id; ?>')">
+                                <button type="button" class="btn btn-link" onclick="functionLike('<?php echo $pr_id; ?>')" <?php if (!isset($_SESSION['user'])) { echo "hidden"; } ?> >
                                     <img src="imagenes/iconos/<?php echo $heart ?>.png" width="25" height="25" id="<?php echo $pr_id ?>">
                                 </button>
 
@@ -139,7 +139,7 @@
                             <h3 class="card-title producto"> 
                                 <?php in_array("$pr_id", $a_likes) ? $heart = 'like' : $heart = 'dike'; ?>
 
-                                <button type="button" class="btn btn-link" onclick="functionLike('<?php echo $pr_id; ?>')">
+                                <button type="button" class="btn btn-link" onclick="functionLike('<?php echo $pr_id; ?>')" <?php if (!isset($_SESSION['user'])) { echo "hidden"; } ?> > 
                                     <img src="imagenes/iconos/<?php echo $heart ?>.png" width="25" height="25" id="<?php echo $pr_id ?>">
                                 </button>
 
