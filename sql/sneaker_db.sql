@@ -267,7 +267,6 @@ INSERT INTO `likes` (`producto`, `usuario`) VALUES (20, 1);
 
 SET SQL_SAFE_UPDATES = 0;
 
-SELECT * FROM usuario WHERE user = 'pepe';
 
 COMMIT;
 

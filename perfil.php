@@ -50,10 +50,8 @@
         </div>
     </header>
 
-    <div class="row">
-        <div class="col-sm-3">
-        </div>
-        <div class="col-sm-6">
+    <div class="row justify-content-center">
+        <div>
             <h2 class="italica mb-3">Acá podés editar tus datos de usuario.</h2>
 
                         <table>

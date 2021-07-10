@@ -163,7 +163,7 @@
     function functionLike(id) {
 
         var req = new XMLHttpRequest(); // Objeto que permite enviar/recibir datos
-        req.open('POST', 'inc/likes.php', true); // Peticion de datos por metodo GET
+        req.open('POST', 'inc/likes.php', true); // Peticion de datos por metodo POST
         req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); // Codifica los datos enviados desde el server
         req.onreadystatechange = function () { // Metodo que 'escucha' la respuesta del servidor
         }
