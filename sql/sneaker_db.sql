@@ -33,7 +33,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `producto` ;
 
 CREATE TABLE IF NOT EXISTS `producto` (
-  `id_producto` INT NOT NULL,
+  `id_producto` INT NOT NULL AUTO_INCREMENT,
   `modelo` VARCHAR(15) NOT NULL,
   `marca` VARCHAR(15) NOT NULL,
   `precio` DOUBLE(7,2) NOT NULL,
@@ -264,9 +264,9 @@ INSERT INTO `likes` (`producto`, `usuario`) VALUES (18, 1);
 INSERT INTO `likes` (`producto`, `usuario`) VALUES (19, 1);
 INSERT INTO `likes` (`producto`, `usuario`) VALUES (20, 1);
 
-
 SET SQL_SAFE_UPDATES = 0;
 
+SELECT * FROM producto;
 
 COMMIT;
 

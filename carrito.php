@@ -75,7 +75,7 @@
                     $a_prod = mysqli_fetch_array($resultprod, MYSQLI_ASSOC); // Obtengo el array del producto del carrito
         
         
-                    $pr_ima = "imagenes/productos/" . $pr_id . "/chica.jpg";
+                    $pr_ima = "imagenes/productos/" . $pr_id . ".jpg";
                     $pr_nom = $a_prod['marca'] . ' ' . $a_prod['modelo'];
                     $pr_pre = $a_prod['precio'];
         

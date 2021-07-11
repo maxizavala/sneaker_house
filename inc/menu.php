@@ -13,7 +13,7 @@
                         <div class="modal-body">
                             <p> <a href="perfil.php" class="btn btn-primary btn-lg btn-block">Perfil</a> </p>
                             <p> 
-                                <button type="button" class="btn btn-primary btn-lg btn-block" aria-label="Close" data-toggle="modal" data-target="#favoritos">
+                                <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#favoritos">
                                     Favoritos
                                 </button>
                             </p>
@@ -64,7 +64,7 @@
                         $a_prod = mysqli_fetch_array($resultprod, MYSQLI_ASSOC); // Obtengo el array del producto del carrito
 
 
-                        $pr_ima = "imagenes/productos/" . $pr_id . "/chica.jpg";
+                        $pr_ima = "imagenes/productos/" . $pr_id . ".jpg";
                         $pr_nom = $a_prod['marca'] . ' ' . $a_prod['modelo'];
                 ?>
 

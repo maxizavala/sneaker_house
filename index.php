@@ -94,7 +94,7 @@
                     foreach ($a_productos as $a_producto) {
                         if ($a_producto['categoria'] == $id_cat) { // COINCIDENCIA DE CATEGORIAS
                             $pr_id = $a_producto['id_producto'];
-                            $pr_ima = "imagenes/productos/" . $pr_id . "/chica.jpg";
+                            $pr_ima = "imagenes/productos/" . $pr_id . ".jpg";
                             $pr_nom = $a_producto['marca'] . ' ' . $a_producto['modelo'];
                             $pr_pre = $a_producto['precio'];
                             $pr_des = $a_producto['descripcion'];
@@ -126,7 +126,7 @@
             /* Si no se envío nada por el método GET, se muestran todos los productos, independientemente de la categoría. */
                     foreach ($a_productos as $a_producto) {
                         $pr_id = $a_producto['id_producto'];
-                        $pr_ima = "imagenes/productos/" . $pr_id . "/chica.jpg";
+                        $pr_ima = "imagenes/productos/" . $pr_id . ".jpg";
                         $pr_nom = $a_producto['marca'] . ' ' . $a_producto['modelo'];
                         $pr_pre = $a_producto['precio'];
                         $pr_des = $a_producto['descripcion'];

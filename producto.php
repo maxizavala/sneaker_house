@@ -75,7 +75,7 @@
 
             <figure class="col-sm-12 col-md-6 der thumb">
                 <?php // ---------------------- IMAGEN
-                    echo "<img src='imagenes/productos/$id_producto/grande.jpg' alt='$marca $modelo' title='$marca $modelo' width='800' height='533' class='rounded-lg img-fluid shadow'>";
+                    echo "<img src='imagenes/productos/$id_producto.jpg' alt='$marca $modelo' title='$marca $modelo' width='800' height='533' class='rounded-lg img-fluid shadow'>";
                 ?>
             </figure>
         </div>
