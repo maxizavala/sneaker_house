@@ -16,7 +16,7 @@
         // Nuevos datos
         if (isset($_POST)) {
 
-            if ($_POST['subtitulo'] != null) {
+            if (isset($_POST['subtitulo'])) {
     
                 $n_subtit = $_POST['subtitulo'];
                 $n_fb = $_POST['fb'];
@@ -31,13 +31,13 @@
                 $result = mysqli_query($enlace, $sql);
             }
 
-            elseif ($_POST['delete_categoria'] != null) {
+            elseif (isset($_POST['delete_categoria'])) {
                 $del_cat = $_POST['delete_categoria'];
                 $sql = "DELETE FROM categoria WHERE id_categoria = $del_cat;";
                 $result = mysqli_query($enlace, $sql);
             }
 
-            elseif ($_POST['new_categoria'] != null) {
+            elseif (isset($_POST['new_categoria'])) {
                 $new_cat = $_POST['new_categoria'];
                 $sql = "INSERT INTO categoria (nombre) VALUES ('$new_cat');";
                 $result = mysqli_query($enlace, $sql);

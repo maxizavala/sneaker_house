@@ -28,7 +28,7 @@
     if (isset($_POST)) {
 
         // Actualizar modelo existente
-        if ($_POST['guardar'] != null) {
+        if (isset($_POST['guardar'])) {
 
             $modelo = $_POST['modelo'];
             $marca = $_POST['marca'];
@@ -43,7 +43,7 @@
         }
 
         // Nuevo modelo
-        elseif ($_POST['n_modelo'] != null) {
+        elseif (isset($_POST['n_modelo'])) {
 
             //Obtengo nuevo id de producto
             $new_id = mysqli_fetch_array(mysqli_query($enlace, "SELECT MAX(id_producto)+1 AS id FROM PRODUCTO;"), MYSQLI_ASSOC)['id'];
@@ -85,7 +85,7 @@
         }
 
         // Eliminar modelo
-        elseif ($_POST['delete'] != null) {
+        elseif (isset($_POST['delete'])) {
             $del_prod = $_POST['delete'];
             $sql = "DELETE FROM producto WHERE id_producto = $del_prod;";
             $result = mysqli_query($enlace, $sql);
