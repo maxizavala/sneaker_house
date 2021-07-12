@@ -12,17 +12,20 @@
     }
 
     // id del usuario
-    if (isset($_SESSION)) {
+    if (isset($_SESSION['id'])) {
         $user = $_SESSION['id'];
     }
 
+    $like = false;
     // LIKES: Consulto en la BD si el producto tiene like
     if (isset($_SESSION['user'])) {
         $usuario = $_SESSION['user'];
         $sql = "SELECT likes.producto AS producto FROM likes INNER JOIN usuario ON usuario.id_usuario = likes.usuario WHERE usuario.user = '$usuario' AND producto = $id_producto";
-        $result = mysqli_query($enlace, $sql); 
+        $result = mysqli_query($enlace, $sql);
         $a_likes = mysqli_fetch_array($result, MYSQLI_ASSOC);
-        $like = $a_likes['producto'];
+        if (!empty($a_likes)) {
+            $like = $a_likes['producto'];
+        }
     }
 
     // Si recibe un POST..

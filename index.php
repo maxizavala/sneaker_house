@@ -6,7 +6,7 @@
     include_once('inc/carrousel.php'); 
     include('inc/connect.php');
     
-    if (isset($_SESSION)) {
+    if (isset($_SESSION['id'])) {
         $user = $_SESSION['id'];
     }
     

@@ -13,7 +13,7 @@
     </header>
 
     <?php
-        if ($_POST['usuario'] != null) {
+        if (isset($_POST['usuario'])) {
             $user = $_POST['usuario'];
             $pass = $_POST['password'];
             $mail = $_POST['email'];
@@ -33,8 +33,8 @@
             $cp = $_POST['cp'];
     
 
-            $sql = "INSERT INTO `usuario` (`user`, `pass`, `email`, `telefono`, `nombre`, `fec_nacimiento`, `direccion`, `localidad`, `cp`)
-                VALUES ('$user', '$pass', '$mail', '$tel', '$nombre', '$fec_nac', '$direccion', $ciudad, $cp)";
+            $sql = "INSERT INTO `usuario` (`tipo`, `user`, `pass`, `email`, `telefono`, `nombre`, `fec_nacimiento`, `direccion`, `localidad`, `cp`)
+                VALUES ('comun', '$user', '$pass', '$mail', '$tel', '$nombre', '$fec_nac', '$direccion', $ciudad, $cp)";
                 
             $result = mysqli_query($enlace, $sql);
     ?>

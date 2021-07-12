@@ -88,7 +88,6 @@
                         if ($a_usuario != null) {
                             
                             //inicio de session
-                            session_start();
                             $_SESSION['user'] = $a_usuario['user'];
                             $_SESSION['tipo'] = $a_usuario['tipo'];
                             $_SESSION['nombre'] = $a_usuario['nombre'];
